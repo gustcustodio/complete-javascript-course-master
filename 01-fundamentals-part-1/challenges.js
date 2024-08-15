@@ -1,3 +1,4 @@
+/*
 const massMark = 78;
 const heightMark = 1.69;
 const massJohn = 92;
@@ -11,3 +12,4 @@ console.log(BMIJohn);
 
 const markHigherBMI = BMIMark > BMIJohn;
 console.log(markHigherBMI);
+*/
