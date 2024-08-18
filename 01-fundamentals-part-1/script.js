@@ -10,7 +10,7 @@ console.log(firstName);
 let jonas_matilda = "JM";
 let $function = 27;
 
-// variable name conventions
+/ variable name conventions
 let person = "jonas";
 let PI = 3.1415;
 
@@ -27,10 +27,10 @@ console.log(myFirstJob);
 let javascriptIsFun = true;
 console.log(javascriptIsFun);
 
-// console.log(typeof true);
+/ console.log(typeof true);
 console.log(typeof javascriptIsFun);
-// console.log(typeof 23);
-// console.log(typeof 'Gustavo');
+/ console.log(typeof 23);
+/ console.log(typeof 'Gustavo');
 
 javascriptIsFun = 'YES!';
 console.log(typeof javascriptIsFun);
@@ -50,29 +50,29 @@ let age = 30; // mutável
 age = 31;
 
 const birthYear = 1991; // imutável
-// birthYear = 1990;
+/ birthYear = 1990;
 
-// const job;
+/ const job;
 
 var job = 'programmer';
 job = 'teacher';
 */
 
 /*
-// math operators
+/ math operators
 const now = 2037;
 const ageJonas = now - 1991;
 const ageSarah = now - 2018;
 console.log(ageJonas, ageSarah);
 
 console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
-// 2 ** 3 means 2 to the power of 3 = 2 * 2 * 2
+/ 2 ** 3 means 2 to the power of 3 = 2 * 2 * 2
 
 const firstName = "Gustavo";
 const lastName = "Felipe";
 console.log(firstName + " " + lastName);
 
-// assignment operators
+/ assignment operators
 let x = 10 + 5; // 15
 x += 10; // x = x + 10 = 25
 x *= 4; // x = x * 4 = 100
@@ -81,7 +81,7 @@ x--; // x = x - 1
 x--;
 console.log(x);
 
-// comparison operators
+/ comparison operators
 console.log(ageJonas > ageSarah); // >, <, >=, <=
 console.log(ageSarah >= 18);
 
@@ -91,7 +91,7 @@ console.log(now - 1991 > now - 2018);
 */
 
 /* 
-// operator precedence
+/ operator precedence
 const now = 2037;
 const ageJonas = now - 1991;
 const ageSarah = now - 2018;
@@ -106,4 +106,52 @@ console.log(x, y);
 
 const averageAge = (ageJonas + ageSarah) / 2;
 console.log(ageJonas, ageSarah, averageAge);
-*/ 
+*/
+
+/**
+const firstName = "Jonas";
+const job = "teacher";
+const birthYear = 1991;
+const year = 2037;
+
+const jonas =
+  "I'm " + firstName + ", a " + (year - birthYear) + " years old " + job + "!";
+
+console.log(jonas);
+
+const jonasNew = `I'm ${firstName}, a ${year - birthYear} years old ${job}!`;
+console.log(jonasNew);
+
+console.log(`Just a regular string...`);
+
+console.log("String with \n\
+multiple \n\
+line");
+
+console.log(`String
+multiple
+lines`);
+*/
+
+/** 
+const age = 15;
+
+if (age >= 18) {
+  console.log("Sarah can start driving license 🚗");
+} else {
+  const yearsLeft = 18 - age;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years 😉`);
+}
+
+const birthYear = 1997;
+
+let century;
+if (birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+
+console.log(century);
+*/
+
