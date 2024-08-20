@@ -212,7 +212,7 @@ const age = "18";
 //! Strict equality (===) - RECOMENDED
 if (age === 18) console.log("You just became an adult :D");
 //! Equality (==)
-if (age === 18) console.log("You just became an adult :D");
+if (age == 18) console.log("You just became an adult :D");
 
 const favourite = Number(prompt("What's your favourite number? "));
 console.log(favourite);
@@ -230,4 +230,31 @@ if (favourite === 23) {
 }
 
 if (favourite !== 23) console.log("Why not 23?");
+*/
+
+/**
+//! logical operators
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision); //* AND
+console.log(hasDriversLicense || hasGoodVision); //* OR
+console.log(!hasDriversLicense); //* NOT
+
+// const shouldDrive = hasDriversLicense && hasGoodVision;
+
+// if (hasDriversLicense && hasGoodVision) {
+//   console.log("Sarah is able to drive!");
+// } else {
+//   console.log("Someone else should drive...");
+// }
+
+const isTired = false; // C
+console.log(hasDriversLicense || hasGoodVision || isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log("Sarah is able to drive!");
+} else {
+  console.log("Someone else should drive...");
+}
 */
