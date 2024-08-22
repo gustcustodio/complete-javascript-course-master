@@ -66,3 +66,16 @@ if (scoreDolphins > scoreKoalas && scoreDolphins >= 100) {
   console.log("No one wins the trophy 😢");
 }
 */
+
+/*
+// 40 275 430
+const bill = 430;
+// let x = bill >= 50 && bill <= 300;
+// let tip = x ? bill * 0.15 : bill * 0.2;
+let tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
+// console.log(x);
+// console.log(tip);
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}.`
+);
+*/
