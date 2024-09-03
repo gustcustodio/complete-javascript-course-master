@@ -115,3 +115,50 @@ const yearsUntilRetirement = function (birthYear, firstName) {
 console.log(yearsUntilRetirement(1991, "Gustavo"));
 console.log(yearsUntilRetirement(1970, "Mike"));
 */
+/** 
+ * ! introduction to arrays
+const friend1 = "Michael";
+const friend2 = "Steven";
+const friend3 = "Peter";
+
+// * literal syntax
+const friends = ["Michael", "Steven", "Peter"];
+console.log(friends);
+
+const years = new Array(1991, 1984, 2008, 2020);
+
+console.log(friends[0]);
+console.log(friends[2]);
+
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+// ! only primitive values are immutable. an array is not a primitive value.
+friends[2] = "Jay";
+console.log(friends);
+// friends = ["Bob", "Alice"];
+
+const firstName = "Jonas";
+const jonas = [firstName, "Schmedtmann", 2037 - 1991, "teacher", friends];
+console.log(jonas);
+console.log(jonas.length);
+
+// exercise
+const calAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+
+const years2 = [1990, 1967, 2002, 2010, 2018];
+
+const age1 = calAge(years2[0]);
+const age2 = calAge(years2[1]);
+const age3 = calAge(years2[years2.length - 1]);
+console.log(age1, age2, age3);
+
+const ages = [
+  calAge(years2[0]),
+  calAge(years2[1]),
+  calAge(years2[years2.length - 1]),
+];
+console.log(ages);
+*/
