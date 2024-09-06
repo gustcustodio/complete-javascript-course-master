@@ -240,3 +240,33 @@ console.log(
   `${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`
 );
 */
+
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  birthYear: 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  // calcAge: function(birthYear) {
+  //   return 2037 - birthYear;
+  // }
+
+  // calcAge: function() {
+  //   return 2037 - this.birthYear;
+  // }
+
+  calcAge: function() {
+    this.age = 2037 - this.birthYear; // ! add properties
+    return this.age;
+  }
+};
+
+console.log(jonas.calcAge());
+console.log(jonas.age);
+console.log(jonas.age);
+console.log(jonas.age);
+
+
+// todo Challenge: "Jonas is a 46-year old teacher, and he as a driver's license"
