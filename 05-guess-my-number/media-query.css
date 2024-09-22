@@ -1,0 +1,54 @@
+@media only screen and (max-width: 720px) {
+  main {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .again {
+    top: 4rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .number {
+    font-size: 3rem;
+    width: 7.5rem;
+    padding: 1.5rem 0rem;
+  }
+
+  .left {
+    width: 100%;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 1rem;
+    align-items: center;
+  }
+
+  .guess {
+    border: 2px solid #eee;
+    font-size: 2.5rem;
+    padding: 1.25rem;
+    width: 12.5rem;
+    margin-top: 5rem;
+    display: block;
+  }
+
+  .message {
+    height: 1.5rem;
+  }
+
+  main {
+    height: 32.5rem;
+  }
+}
