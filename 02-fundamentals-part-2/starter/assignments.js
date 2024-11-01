@@ -42,13 +42,10 @@ console.log(percentageOfWorld2("Brasil", 216));
 
 // ! arrow functions ! //
 
-const percentageOfWorld3 = (country, population) => {
+const percentageOfWorld3 = (population) => {
   const worldPopulation = 7900;
   const percentage = (population / worldPopulation) * 100;
-  // const description = `${country} has ${population} million people, so it's about ${percentage.toFixed(
-  //   1
-  // )}% of the world population.`;
-  return percentage;
+  return percentage.toFixed(1);
 };
 
 // console.log(percentageOfWorld3("EUA", 334));
@@ -130,11 +127,38 @@ console.log(myCountry);
 
 // ! looping arrays, breaking and continuing ! //
 
-const percentages2 = [
-  percentageOfWorld3(100),
-  percentageOfWorld3(200),
-  percentageOfWorld3(300),
+const percentages2 = [];
+
+for (let i = 0; i < populations.length; i++) {
+  const perc = percentageOfWorld3(populations[i]);
+  percentages2.push(perc);
+}
+
+console.log(percentages2);
+
+// ! looping backwards and loops in loops ! //
+
+const listOfNeighbours = [
+  ["Canada", "Mexico"],
+  ["Spain"],
+  ["Norway", "Sweden", "Russia"],
 ];
 
-// todo verificar o motivo de estar retornando NaN //
-console.log(percentages2);
+for (let i = 0; i < listOfNeighbours.length; i++) {
+    for (let j = 0; j < listOfNeighbours[i].length; j++) {
+      console.log(`Neighbour: ${listOfNeighbours[i][j]}`);
+    }
+}
+
+// ! the while loop ! //
+
+let i = 0;
+const percentages3 = [];
+
+while (i < populations.length) {
+  const perc = percentageOfWorld3(populations[i]);
+  percentages3.push(perc);
+  i++;
+}
+
+console.log(percentages3);
