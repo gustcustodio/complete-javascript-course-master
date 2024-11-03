@@ -222,3 +222,120 @@ const books = [
     highlighted: true,
   },
 ];
+
+////////////////// ! destructuring arrays ! //////////////////
+
+// todo destructure the books array into two variables called firstBook and secondBook. //
+const [firstBook, secondBook] = books;
+
+// todo destructure the books array into a variable called thirdBook. You must skip the first two books. //
+const [, , thridBook] = books;
+
+// todo below is the nested ratings array that contains two other arrays. Destructure the nested ratings arrays into two variables called rating and ratingsCount. In the result of your destructuring, the ratings variable should store a number 4.19, and the ratingsCount variable should store a number 144584. //
+
+const ratings = [
+  ["rating", 4.19],
+  ["ratingsCount", 144584],
+];
+
+const [[, rating], [, ratingsCount]] = ratings;
+// console.log(rating, ratingsCount);
+
+// todo below is the ratingStars array. Destructure it into three variables called fiveStarRatings, oneStarRatings and threeStarRatings. Assign the threeStarRatings variable with a default value of 0. //
+
+const ratingStars = [63405, 1808];
+
+const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
+
+// console.log(fiveStarRatings);
+// console.log(oneStarRatings);
+// console.log(threeStarRatings);
+
+////////////////// ! destructuring objects ! //////////////////
+
+// todo destructure the first book object from the books array into variables called title, author and ISBN. //
+
+const [{ title, author, ISBN }] = books;
+
+// console.log(title);
+// console.log(author);
+// console.log(ISBN);
+
+// todo each book object has the keywords property. Destructure the first book object from the books array into a variable called tags. The tags variable should be assigned with the value of the keywords property. //
+
+const { keywords: tags } = books[0];
+// console.log(tags);
+
+// todo the seventh book from the books array is missing the programmingLanguage property. Destructure the seventh book object (books[6]) into variables called language and programmingLanguage. Assign the programmingLanguage variable with a default value of 'unknown'. //
+
+const { language, programmingLanguage = "unknown" } = books[6];
+// console.log(language);
+// console.log(programmingLanguage);
+
+// todo below are two variables called bookTitle and bookAuthor. Reassign them with the values of the title and author properties of the first book object from the books array. //
+
+let bookTitle = "unknown";
+let bookAuthor = "unknown";
+
+({ title: bookTitle, author: bookAuthor } = books[0]);
+
+// console.log(bookTitle);
+// console.log(bookAuthor);
+
+// todo destructure the first book object from the books array into a variable called bookRating. In the result of your destructuring, the bookRating variable should be assigned with the value of the book[0].thirdParty.goodreads.rating property. //
+
+const {
+  thirdParty: {
+    goodreads: { rating: bookRating },
+  },
+} = books[0];
+
+// console.log(bookRating);
+
+// todo write a function called printBookInfo that has three parameters called title, author and year. This function should work for a single object passed as an argument, and it should log to the console information about the book in this format: "${title} by ${author}, ${year}". If year is undefined (was not passed), it should be assigned with a default value of 'year unknown'. //
+
+const printBookInfo = function ({ title, author, year = "year unknown" }) {
+  return console.log(`${title} by ${author[0]}, ${year}.`);
+};
+
+// printBookInfo(books[0]);
+
+////////////////// ! the spread operator ! //////////////////
+
+// todo each book object has the author property, which stores an array of strings (author names) if there are multiple authors, or a single string (author name) if there is just one author. Declare an array called bookAuthors, and fill it with authors of the first two books from the books array. The bookAuthors array should have just one level (no nested arrays). //
+
+const bookAuthors = [...books[0].author, ...books[1].author];
+
+// console.log(bookAuthors);
+
+// todo write a function called spellWord that accepts a single string as an argument. This function should log to the console each letter of the argument separated by a space. //
+
+const spellWord = function (string) {
+  return console.log(...string);
+};
+
+// spellWord("JavaScript")
+
+//////////////// ! rest pattern and parameters ! ////////////////
+
+// todo destructure the keywords property (array) of the first book from the books array into variables called mainKeyword and rest. The first keyword should be assigned to mainKeyword, and the rest of the keywords should be assigned to the rest variable (it should be an array). //
+
+const [mainKeyword, ...rest] = books[0].keywords;
+
+// console.log(mainKeyword);
+// console.log(rest);
+
+// todo destructure the second book from the books array into a variable called bookPublisher. The bookPublisher variable should be assigned with the value of the publisher property of the book object. Assign the rest of the properties to the restOfTheBook variable. //
+
+const { publisher: bookPublisher, ...restOfTheBook } = books[1];
+
+// console.log(bookPublisher);
+// console.log(restOfTheBook);
+
+// todo write a function called printBookAuthorsCount that has two parameters called title and authors. The authors parameter should accept any number of arguments. This function should log to the console a string formatted like that: "The book "${title}" has ${authors.length} authors". //
+
+const printBookAuthorsCount = function (title, ...author) {
+  return console.log(`The book "${title}" has ${author.length} authors.`);
+};
+
+printBookAuthorsCount("Algorithms", "Robert Sedgewick", "Kevin Wayne");
