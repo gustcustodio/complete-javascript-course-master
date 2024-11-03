@@ -53,13 +53,91 @@ const restaurant = {
   },
 };
 
-// * 1) DESTRUCTURING
+const rest1 = {
+  name: "Capri",
+  // numGuests: 20,
+  numGuests: 0,
+};
 
-// ! SPREAD, bacause on RIGHT side of = (assignment)
+const rest2 = {
+  name: "La Pizza",
+  owner: "Giovanni Rossi",
+};
+
+// ! OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// ! NULLISH assignment operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// ! AND assignment operator
+// rest1.owner = rest1.owner && "<ANONYMOUS>";
+rest2.owner = rest2.owner && "<ANONYMOUS>";
+rest2.owner &&= "<ANONYMOUS>"
+
+console.log(rest1);
+console.log(rest2);
+
+/////////////////////////////////////////////////////////////////
+/*
+! the nullish coalescing operator (??)
+restaurant.numGuests = 0;
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+! nullish values = null and undefined
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+*/
+/////////////////////////////////////////////////////////////////
+/*
+! short circuiting
+! use ANY data type, return ANY data type, short-circuiting
+
+! OR
+console.log("--- OR ---");
+
+console.log(3 || "Jonas");
+console.log("" || "Jonas");
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || "" || "Hello" || 23 || null);
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+! AND
+console.log("--- AND ---");
+
+console.log(0 && "Jonas");
+console.log(7 && "Jonas");
+
+console.log("Hello" && 23 && "Jonas" && null && true);
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushrooms", "spinach");
+}
+
+restaurant.orderPizza && restaurant.orderPizza("mushrooms", "cheese");
+*/
+/////////////////////////////////////////////////////////////////
+/*
+! rest pattern and parameters
+
+* 1) DESTRUCTURING
+! SPREAD, because on RIGHT side of = (assignment)
 const arr = [1, 2, ...[3, 4]];
 console.log(arr);
-
-// ! REST, because on LEFT side of = (assignment)
+! REST, because on LEFT side of = (assignment)
 const [a, b, ...others] = [1, 2, 3, 4, 5];
 console.log(a, b, others);
 
@@ -68,12 +146,11 @@ const [pizza, , risotto, ...otherFood] = [
   ...restaurant.starterMenu,
 ];
 console.log(pizza, risotto, otherFood);
-
-// ! objects
+! objects
 const { sat, ...weekdays } = restaurant.openingHours;
 console.log(weekdays);
 
-// * 2) FUNCTIONS
+* 2) FUNCTIONS
 const add = function (...numbers) {
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) {
@@ -91,7 +168,7 @@ add(...x);
 
 restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
 restaurant.orderPizza("mushrooms");
-
+*/
 /////////////////////////////////////////////////////////////////
 /*
 ! the spread operator (...)
