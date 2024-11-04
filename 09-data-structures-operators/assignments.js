@@ -338,4 +338,46 @@ const printBookAuthorsCount = function (title, ...author) {
   return console.log(`The book "${title}" has ${author.length} authors.`);
 };
 
-printBookAuthorsCount("Algorithms", "Robert Sedgewick", "Kevin Wayne");
+// printBookAuthorsCount("Algorithms", "Robert Sedgewick", "Kevin Wayne");
+
+////////////// ! short circuiting (&& and ||) ! //////////////
+
+// todo write a function called hasExamplesInJava that takes a book object from the books array as an argument. This function should return true if the book uses Java, or a string 'no data available' if it uses other language or no programming language at all. Use short-circuiting. //
+
+const hasExamplesInJava = function (book) {
+  return console.log((book.programmingLanguage ||= "no data available"));
+};
+
+// hasExamplesInJava(books[4]);
+
+// todo some of the book objects have the onlineContent property, which is either true or false. Loop over the books array, and for the books that provide online content, log to the console a string in this format: "${title}" provides online content. Use short-circuiting. //
+
+// for (let i = 0; i < books.length; i++) {
+//   books[i].onlineContent &&
+//     console.log(`${books[i].title} provides online content.`);
+// }
+
+////////// ! the nullish coalescing operator (??) ! //////////
+
+// todo there are objects in the books array that don't have the onlineContent property at all. Loop over the books array, and log a string to the console in this format: "${title}" provides no data about its online content. //
+
+// for (let i = 0; i < books.length; i++) {
+//   books[i].onlineContent ??
+//     console.log(`${books[i].title} provides no data about its online content.`);
+// }
+
+////////////// ! logical assignments operators ! //////////////
+
+// todo some of the book objects from the books array are missing the edition property. Loop over the books array, and assign this property with a number 1 (if it doesn't already exist). Use logical assignment operators. //
+
+// for (let i = 0; i < books.length; i++) {
+//   console.log((books[i].edition ||= 1));
+// }
+
+// todo some of the book objects from the books array have the highlighted property, which by default is set to true. Iterate over the books array, and if the thirdParty.goodreads.rating property is less than 4.2, reassign it with false. //
+
+// for (let i = 0; i < books.length; i++) {
+//   if (books[i].thirdParty.goodreads.rating < 4.2) {
+//     console.log(books[i].highlighted = false);
+//   } 
+// };
