@@ -126,20 +126,59 @@ const game = {
   },
 };
 
+// * 1.
+const {
+  players: [players1, players2],
+} = game;
+// console.log(players1);
+// console.log(players2);
+
+// * 2.
+const [gk, ...fieldPlayers] = players1;
+// console.log(gk);
+// console.log(fieldPlayers);
+
+// * 3.
+const [...allPlayers] = [...players1, ...players2];
+// console.log(allPlayers);
+
+// * 4.
+const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+// console.log(players1Final);
+
+// * 5.
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+// console.log(team1, draw, team2);
+
+// * 6.
+const printGoals = function (...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored`);
+};
+
+// printGoals("Davies", "Muller", "Lewandowski", "Kimich");
+// printGoals(...game.scored);
+
+// * 7.
+// team1 < team2 && console.log("Team 1 is more likely to win");
+// team1 > team2 && console.log("Team 1 is more likely to win");
+
 /////////////////////////////////////////////////////////////////
 /*
 ! OR assignment operator
-// rest1.numGuests = rest1.numGuests || 10;
-// rest2.numGuests = rest2.numGuests || 10;
-// rest1.numGuests ||= 10;
-// rest2.numGuests ||= 10;
+rest1.numGuests = rest1.numGuests || 10;
+rest2.numGuests = rest2.numGuests || 10;
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
 
 ! NULLISH assignment operator (null or undefined)
 rest1.numGuests ??= 10;
 rest2.numGuests ??= 10;
 
 ! AND assignment operator
-// rest1.owner = rest1.owner && "<ANONYMOUS>";
+rest1.owner = rest1.owner && "<ANONYMOUS>";
 rest2.owner = rest2.owner && "<ANONYMOUS>";
 rest2.owner &&= "<ANONYMOUS>"
 
