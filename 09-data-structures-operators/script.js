@@ -64,8 +64,8 @@ const rest2 = {
   name: "La Pizza",
   owner: "Giovanni Rossi",
 };
-
-// ! property NAMES
+/*
+! property NAMES
 const properties = Object.keys(openingHours);
 console.log(properties);
 
@@ -75,18 +75,18 @@ for (const day of properties) {
 }
 console.log(openStr.slice(0, -2));
 
-// ! property VALUES
+! property VALUES
 const values = Object.values(openingHours);
 console.log(values);
 
-// ! entire object
+! entire object
 const entries = Object.entries(openingHours);
 console.log(entries);
 
 for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we open at ${open} and close at ${close}.`);
 }
-
+/*
 /////////////////////////////////////////////////////////////////
 /*
 ! optional chaining
