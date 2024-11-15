@@ -65,7 +65,51 @@ const rest2 = {
   owner: "Giovanni Rossi",
 };
 
-// ! split and join
+/////////////////////////////////////////////////////////////////
+// ! Coding Challenge #4
+
+/* 
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
+
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
+
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
+
+HINT 1: Remember which character defines a new line in the textarea 😉
+HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+
+Afterwards, test with your own test data!
+
+GOOD LUCK 😀
+*/
+
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+document.querySelector("button").addEventListener("click", function () {
+  const text = document.querySelector("textarea").value;
+  console.log(text);
+});
+
+/////////////////////////////////////////////////////////////////
+/*
+! working with strings - part 2 
+
+! split and join
 console.log("a+very+nice+string".split("+"));
 console.log("Gustavo Custodio".split(" "));
 
@@ -90,7 +134,7 @@ const capitalizeName = function (name) {
 capitalizeName("jessica ann smith davis");
 capitalizeName("gustavo custodio");
 
-// ! padding
+! padding
 const message = "Go to gate 23!";
 console.log(message.padStart(20, "+").padEnd(30, "+"));
 console.log("Gustavo".padStart(20, "+").padEnd(30, "+"));
@@ -102,9 +146,22 @@ const maskCreditCard = function (number) {
 };
 
 console.log(maskCreditCard(123456789));
-console.log(maskCreditCard(BigInt(123456789123456789n)));
-console.log(maskCreditCard(BigInt(123456789123456789n)));
+? BigInt values represent numeric values which are too large to be represented by the number primitive.
+console.log(maskCreditCard(123456789123456789n));
+console.log(maskCreditCard(BigInt("123456789123456789")));
 
+! repeat
+const message2 = "Bad waether... All Departues Delayed... ";
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${"✈️".repeat(n)}`);
+};
+
+planesInLine(5);
+planesInLine(10);
+planesInLine(15);
+*/
 /////////////////////////////////////////////////////////////////
 /*
 ! working with strings - part 2 
@@ -125,7 +182,7 @@ console.log(passengerCorrect);
 const email = "hello@jonas.io";
 const loginEmail = "   Hello@Jonas.Io  \n";
 
-? method chaining - cada método retorna um valor que pode ser usado imediatamente pelo próximo método na cadeia. A capacidade de encadear métodos reduz a necessidade de criar variáveis intermediárias e torna o código mais conciso. //
+? method chaining - cada método retorna um valor que pode ser usado imediatamente pelo próximo método na cadeia. A capacidade de encadear métodos reduz a necessidade de criar variáveis intermediárias e torna o código mais conciso.
 // const lowerEmail = loginEmail.toLowerCase();
 // console.log(lowerEmail);
 // const trimmedEmail = lowerEmail.trim();
@@ -189,7 +246,7 @@ console.log(airline.lastIndexOf("r")); // * last occurrence
 console.log(airline.indexOf("Portugal")); // * case sensitive
 console.log(airline.indexOf("portugal")); // * case sensitive
 
-? The returned array contains the element specified by the first argument and all subsequent elements up to, BUT NOT INCLUDING, the element specified by the second argument. //
+? The returned array contains the element specified by the first argument and all subsequent elements up to, BUT NOT INCLUDING, the element specified by the second argument.
 
 console.log(airline.slice(4));
 console.log(airline.slice(4, 7));
@@ -197,7 +254,7 @@ console.log(airline.slice(4, 7));
 console.log(airline.slice(0, airline.indexOf(" ")));
 console.log(airline.slice(airline.lastIndexOf(" ") + 1));
 
-?  If either argument is negative, it specifies an array element relative to the length of the array. An argument of –1, for example, specifies the last element in the array, and an argument of –2 specifies the element before that one. //
+?  If either argument is negative, it specifies an array element relative to the length of the array. An argument of –1, for example, specifies the last element in the array, and an argument of –2 specifies the element before that one.
 
 console.log(airline.slice(-2));
 console.log(airline.slice(1, -1));
