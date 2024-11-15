@@ -65,8 +65,150 @@ const rest2 = {
   owner: "Giovanni Rossi",
 };
 
+const airline = "TAP Air Portugal";
 
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
 
+// * fix capitalization in name
+const passenger = "jOnAs";
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// * comparing emails
+const email = "hello@jonas.io";
+const loginEmail = "   Hello@Jonas.Io  \n";
+
+// ? method chaining - cada método retorna um valor que pode ser usado imediatamente pelo próximo método na cadeia. A capacidade de encadear métodos reduz a necessidade de criar variáveis intermediárias e torna o código mais conciso. //
+// const lowerEmail = loginEmail.toLowerCase();
+// console.log(lowerEmail);
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// * replacing
+const priceGB = "288,97£";
+const priceUS = priceGB.replace("£", "$").replace(",", ".");
+console.log(priceUS);
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23!";
+
+console.log(announcement.replace("door", "gate"));
+console.log(announcement.replaceAll("door", "gate"));
+console.log(announcement.replace(/door/g, "gate")); // ! RegExp
+
+// * booleans
+
+/////////////////////////////////////////////////////////////////
+/*
+! working with strings - part1 
+const plane = "A320";
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log(plane[3]);
+console.log("B737"[0]);
+
+console.log(airline.length);
+console.log("B737".length);
+
+console.log(airline.indexOf("r")); // * first occurrence
+console.log(airline.lastIndexOf("r")); // * last occurrence
+console.log(airline.indexOf("Portugal")); // * case sensitive
+console.log(airline.indexOf("portugal")); // * case sensitive
+
+? The returned array contains the element specified by the first argument and all subsequent elements up to, BUT NOT INCLUDING, the element specified by the second argument. //
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(" ")));
+console.log(airline.slice(airline.lastIndexOf(" ") + 1));
+
+?  If either argument is negative, it specifies an array element relative to the length of the array. An argument of –1, for example, specifies the last element in the array, and an argument of –2 specifies the element before that one. //
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === "B" || s === "E") {
+    console.log("You got the middle seat 😳");
+  } else {
+    console.log("You got lucky 😁");
+  }
+}
+
+checkMiddleSeat("11B");
+checkMiddleSeat("23C");
+checkMiddleSeat("3E");
+
+? boxing é o processo de empacotar um tipo primitivo (como números, strings, ou valores booleanos) em seu objeto correspondente, permitindo que ele seja tratado como um objeto. O Boxing acontece quando um valor primitivo é temporariamente convertido em um objeto para que você possa acessar propriedades ou métodos nele.
+
+console.log(new String("jonas"));
+console.log(typeof new String("jonas"));
+console.log(typeof new String("jonas").slice(1));
+*/
+/////////////////////////////////////////////////////////////////
+// ! Coding Challenge #3
+
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
+/*
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+* 1.
+const events = [...new Set(gameEvents.values())];
+// console.log(events);
+
+* 2.
+gameEvents.delete(64);
+// console.log(gameEvents);
+
+* 3.
+const gameTime = 90;
+const eventOccurrence = gameTime / gameEvents.size;
+
+// console.log(`An event happened, on average, every ${eventOccurrence} minutes.`);
+
+* 4.
+for (const [key, value] of gameEvents) {
+  if (key <= 45) {
+    console.log(`[FIRST HALF] ${key}: ${value}`);
+  } else {
+    console.log(`[SECOND HALF] ${key}: ${value}`);
+  }
+}
+*/
 /////////////////////////////////////////////////////////////////
 /*
 const question = new Map([
@@ -252,13 +394,13 @@ const game = {
   },
 };
 
-// * 1.
+* 1.
 
 // for (const score of game.scored.entries()) {
 //   console.log(`Goal ${score[0] + 1}: ${score[1]}`);
 // }
 
-// * 2.
+* 2.
 
 // let odds = Object.values(game.odds)
 // let sum = 0;
@@ -280,7 +422,7 @@ const game = {
 
 // console.log(average.toFixed(2));
 
-// * 3
+* 3
 
 // const odds = Object.entries(game.odds);
 
@@ -289,7 +431,7 @@ const game = {
 //   console.log(`Odd of ${teamName}: ${value}`);
 // }
 
-// * BONUS
+* BONUS
 
 const scored = game.scored;
 
