@@ -65,23 +65,67 @@ const rest2 = {
   owner: "Giovanni Rossi",
 };
 
+// ! split and join
+console.log("a+very+nice+string".split("+"));
+console.log("Gustavo Custodio".split(" "));
+
+const [firstName, lastName] = "Gustavo Custodio".split(" ");
+// console.log(firstName);
+// console.log(lastName);
+
+const newName = ["Mr.", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(" ");
+  const namesUpper = [];
+
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(" "));
+};
+
+capitalizeName("jessica ann smith davis");
+capitalizeName("gustavo custodio");
+
+// ! padding
+const message = "Go to gate 23!";
+console.log(message.padStart(20, "+").padEnd(30, "+"));
+console.log("Gustavo".padStart(20, "+").padEnd(30, "+"));
+
+const maskCreditCard = function (number) {
+  const str = String(number);
+  const last = str.slice(-4);
+  return last.padStart(str.length, "*");
+};
+
+console.log(maskCreditCard(123456789));
+console.log(maskCreditCard(BigInt(123456789123456789n)));
+console.log(maskCreditCard(BigInt(123456789123456789n)));
+
+/////////////////////////////////////////////////////////////////
+/*
+! working with strings - part 2 
+
 const airline = "TAP Air Portugal";
 
 console.log(airline.toLowerCase());
 console.log(airline.toUpperCase());
 
-// * fix capitalization in name
+! fix capitalization in name
 const passenger = "jOnAs";
 const passengerLower = passenger.toLowerCase();
 const passengerCorrect =
   passengerLower[0].toUpperCase() + passengerLower.slice(1);
 console.log(passengerCorrect);
 
-// * comparing emails
+! comparing emails
 const email = "hello@jonas.io";
 const loginEmail = "   Hello@Jonas.Io  \n";
 
-// ? method chaining - cada método retorna um valor que pode ser usado imediatamente pelo próximo método na cadeia. A capacidade de encadear métodos reduz a necessidade de criar variáveis intermediárias e torna o código mais conciso. //
+? method chaining - cada método retorna um valor que pode ser usado imediatamente pelo próximo método na cadeia. A capacidade de encadear métodos reduz a necessidade de criar variáveis intermediárias e torna o código mais conciso. //
 // const lowerEmail = loginEmail.toLowerCase();
 // console.log(lowerEmail);
 // const trimmedEmail = lowerEmail.trim();
@@ -91,7 +135,7 @@ const normalizedEmail = loginEmail.toLowerCase().trim();
 console.log(normalizedEmail);
 console.log(email === normalizedEmail);
 
-// * replacing
+! replacing
 const priceGB = "288,97£";
 const priceUS = priceGB.replace("£", "$").replace(",", ".");
 console.log(priceUS);
@@ -103,11 +147,32 @@ console.log(announcement.replace("door", "gate"));
 console.log(announcement.replaceAll("door", "gate"));
 console.log(announcement.replace(/door/g, "gate")); // ! RegExp
 
-// * booleans
+! booleans
+const plane = "Airbus A320neo";
+console.log(plane.includes("A320"));
+console.log(plane.includes("Boeing"));
+console.log(plane.startsWith("Airb"));
 
+if (plane.startsWith("Airbus") && plane.endsWith("neo")) {
+  console.log("Part of the NEW Airbus family");
+}
+
+! practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are NOT allowed on board!");
+  } else {
+    console.log("Welcome aboard!");
+  }
+};
+
+checkBaggage("I have a laptop, some Food and a pocket KNIFE");
+checkBaggage("Socks and camera");
+checkBaggage("Got some snacks and a GuN for protection");
 /////////////////////////////////////////////////////////////////
 /*
-! working with strings - part1 
+! working with strings - part 1 
 const plane = "A320";
 
 console.log(plane[0]);
