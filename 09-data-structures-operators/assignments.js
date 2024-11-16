@@ -1,3 +1,5 @@
+"use strict";
+
 const books = [
   {
     title: "Algorithms",
@@ -382,6 +384,8 @@ const hasExamplesInJava = function (book) {
 //   }
 // };
 
+////////////// ! looping arrays: the for-of loop ! //////////////
+
 // todo use the for-of loop to loop over the books array and sum the pages of all books. Use the pageSum variable below, and the pages property of the book objects. //
 
 let pageSum = 0;
@@ -411,6 +415,8 @@ for (const book of books) {
 // for (const [i, el] of allAuthors.entries()) {
 //   console.log(`${i + 1}. ${el}.`);
 // }
+
+////////////////// ! enhanced object literals ! //////////////////
 
 // todo below is the bookData array that contains other arrays. Each inner array consists of the property name (first element), and the value (second element). For example, in ['title', 'Computer Networking: A Top-Down Approach'], 'title' is the property name, and 'Computer Networking: A Top-Down Approach' is meant to be the value assigned to that property name. Using computed properties, fill the newBook object with the properties and values from the bookData array. The first one is done already. //
 
@@ -442,6 +448,8 @@ const newBook2 = {
 
 // console.log(newBook2);
 
+////////////////// ! optional chaining (?.) ! //////////////////
+
 // todo write a function called getFirstKeyword that takes the book object as an argument. This function should return the first keyword from the book's keywords property (array) or undefined (if the keywords property doesn't exist). It shouldn't throw an error. Use optional chaining for that. //
 
 const getFirstKeyword = function (book) {
@@ -450,3 +458,50 @@ const getFirstKeyword = function (book) {
 
 // getFirstKeyword(newBook2);
 
+////// ! looping objects: object keys, values and entries ! //////
+
+// todo below is the entries variable that stores an empty array. Use the for-of loop together with the Object.keys() method to loop over the thirdParty.goodreads property (array) of the first book object from the books array. For each key, push a new array that contains that key to the entries array. //
+
+const entries = [];
+
+for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+  entries.push([key]);
+}
+
+// console.log(entries);
+
+// todo use the for-of loop together with the Object.values() method and Array's entries() method to loop over thirdParty.goodreads property of the first book from the books array. Push each value to the appropriate inner array in the entries array (use index from entries()). //
+
+// for (const [key, value] of Object.entries(books[0].thirdParty.goodreads)) {
+//   entries.push([key, value]);
+// }
+
+for (const [index, value] of Object.values(
+  books[0].thirdParty.goodreads
+).entries()) {
+  entries[index].push(value);
+  // console.log(index, value);
+}
+
+// console.log(entries);
+
+// todo use the Object.entries() method on the thirdParty.goodreads property of the first book from the books array. Assign the returned value to the variable called entries2. //
+
+// const entries2 = [];
+
+// for (const entrie of Object.entries(books[0].thirdParty.goodreads)) {
+//   // console.log(entrie);
+//   entries2.push([entrie]);
+// }
+
+// console.log(entries2);
+
+const entries2 = Object.entries(books[0].thirdParty.goodreads);
+// console.log(entries2);
+
+// todo log the entries and entries2 variables to the console, and compare them. They should look the same. //
+
+console.log(entries);
+console.log(entries2);
+
+//////////////////////////// ! sets ! ////////////////////////////
