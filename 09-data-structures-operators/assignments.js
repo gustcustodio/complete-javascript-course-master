@@ -501,7 +501,242 @@ const entries2 = Object.entries(books[0].thirdParty.goodreads);
 
 // todo log the entries and entries2 variables to the console, and compare them. They should look the same. //
 
-console.log(entries);
-console.log(entries2);
+// console.log(entries);
+// console.log(entries2);
 
 //////////////////////////// ! sets ! ////////////////////////////
+
+// todo below is the allKeywords variable, which stores an empty array. Loop over the books array, and fill the allKeywords array with the keywords coming from the keywords property of each book object. The allKeywords array should have just one level (no nested arrays). Use whatever loop and methods you want. You can also use the spread syntax. In the end, the allKeywords array should look more or less like this: ['computer science', 'programming', 'algorithms', 'data structures', ...]. //
+
+const allKeywords = [];
+
+for (const book of books) {
+  allKeywords.push(...book.keywords);
+}
+
+// console.log(allKeywords);
+
+// todo the allKeyword array contains duplicates. Remove them by creating a Set out of that array. Assign the newly created set to the uniqueKeywords variable. //
+
+const uniqueKeywords = new Set(allKeywords);
+
+// console.log(uniqueKeywords);
+
+// todo add two more keywords to the uniqueKeywords set, for example, 'coding' and 'science'. //
+
+uniqueKeywords.add("coding").add("science");
+
+// console.log(uniqueKeywords);
+
+// todo delete 'business' from the uniqueKeywords set. //
+
+uniqueKeywords.delete("business");
+
+// console.log(uniqueKeywords);
+
+// todo create an array out of the uniqueKeywords set, and assign it to the uniqueKeywordsArr variable. //
+
+// const [...uniqueKeywordsArr] = uniqueKeywords;
+
+const uniqueKeywordsArr = [...uniqueKeywords];
+
+// console.log(uniqueKeywordsArr);
+
+// todo delete all items from the uniqueKeywords set. //
+
+uniqueKeywords.clear();
+
+// console.log(uniqueKeywords);
+
+//////////////////// ! maps: fundamentals ! ////////////////////
+
+// todo create a new book, but this time, as a Map. Assign it to the bookMap variable. //
+
+const bookMap = new Map([
+  ["title", "Clean Code"],
+  ["author", "Robert C. Martin"],
+]);
+
+// console.log(bookMap);
+
+// todo set a new key in bookMap called pages, and assign it with a number 464. //
+
+bookMap.set("pages", "464");
+
+// console.log(bookMap);
+
+// todo get the title and author values from bookMap, and log to the console a string formatted like that: "${title} by ${author}". //
+
+const title1 = bookMap.get("title");
+const author1 = bookMap.get("author");
+
+// console.log(`${title1} by ${author1}`);
+
+// todo get the size of bookMap, and log it to the console. //
+
+// console.log(bookMap.size);
+
+// todo check if bookMap has the author key. and if so, log "The author of the book is known" to the console. //
+
+// console.log(
+//   bookMap.has("author")
+//     ? "The author of the book is known"
+//     : "The author of the book is unknow"
+// );
+
+////////////////////// ! maps: iteration ! //////////////////////
+
+// todo convert the first book object from the books array into a Map, and assign it to a firstBookMap variable. //
+
+const firstBookMap = new Map(Object.entries(books[0]));
+
+// console.log(firstBookMap);
+
+// todo use the for-of loop to iterate over firstBookMap, and log to the console keys that have numbers as values. //
+
+for (const [key, value] of firstBookMap) {
+  if (typeof value === "number") {
+    // console.log(key);
+  }
+}
+
+//////////////////// ! working with strings ! ////////////////////
+
+// todo take the ISBN property of the first book from the books array, and log to the console characters at index 6, 4, 9 and 8. Use bracket notation to access individual characters. //
+
+// console.log(books[0].ISBN);
+// console.log(books[0].ISBN[6]);
+// console.log(books[0].ISBN[4]);
+// console.log(books[0].ISBN[9]);
+// console.log(books[0].ISBN[8]);
+
+// todo below is the quote variable that stores a string. Find the index of the word 'chess', and log it to the console. //
+
+const quote =
+  "A computer once beat me at chess, but it was no match for me at kick boxing";
+
+// console.log(quote.indexOf("chess"));
+
+// todo extract the word "boxing" from the same quote string, and log it to the console. //
+
+// console.log(quote.slice(-6));
+
+// todo some authors are noted as "(Contributor)", for example "Julie Sussman (Contributor)". Create a function called isContributor that takes an author's name as an argument, and returns either true (if he's a contributor) of false (if he's not a contributor). The string "(Contributor)" is always the last part of the author's name string. //
+
+const isContributor = (authorName) => authorName.includes("Contributor");
+
+// console.log(isContributor("Julie Sussman (Contributor)"));
+// console.log(isContributor("Robert Sedgewick"));
+
+// todo write a function called normalizeAuthorName that takes an author's name (string) as an argument, and returns the same string, but the first name and last name are capitalized, and the "(Contributor)" part is removed (if exists). You can be sure that the author's name always consists of two words separated by a space, and possibly ends with "(Contributor)". The string may also contain trailing spaces. //
+
+const normalizeAuthorName = function (authorName) {
+  const [firstName, lastName] = authorName.toLowerCase().trim().split(" ");
+  return console.log(
+    firstName.replace(firstName[0], firstName[0].toUpperCase()),
+    lastName.replace(lastName[0], lastName[0].toUpperCase())
+  );
+};
+
+// normalizeAuthorName("  JuliE sussMan (Contributor)");
+
+// todo take the title of the second book (books[1]) from the books array, and replace the word "Programs" with "Software". Assign the new string to the newBookTitle variable. //
+
+const newBookTitle = books[1].title.replace("Programs", "Software");
+
+// console.log(newBookTitle);
+
+// todo write a function called logBookTheme that takes book's title (string), and logs to the console:
+/*
+"This book is about computers" if the title starts with the word "computer",
+
+"This book is about algorithms and data structures" if the title includes both the "algorithms" and "structures" words,
+
+and, "This book is about some systems, but definitely not about operating systems" if the title ends with the word "system" or "systems", but doesn't include the word "operating".
+*/
+
+const logBookTheme = function (bookName) {
+  if (bookName.toLowerCase().startsWith("computer")) {
+    console.log("This book is about computers");
+  } else if (
+    bookName.toLowerCase().includes("algorithms") &&
+    bookName.toLowerCase().includes("structures")
+  ) {
+    console.log("This book is about algorithms and data structures");
+  } else if (
+    (bookName.toLowerCase().endsWith("system") ||
+      bookName.toLowerCase().endsWith("systems")) &&
+    !bookName.toLowerCase().includes("operating")
+  ) {
+    console.log(
+      "This book is about some systems, but definitely not about operating systems"
+    );
+  }
+};
+
+// logBookTheme("Computer Systems: A Programmer's Perspective");
+// logBookTheme("Data Structures and Algorithms");
+
+// todo below is the bookCategories variable that stores a string of categories. Each category is separated with a semicolon, for example, in a string "science;computing", 'science' and 'computing' are separate categories. Write a function called logBookCategories that takes a string of categories separated with semicolons, and logs each category to the console (as separate strings). //
+
+const logBookCategories = function (str) {
+  const categories = str.split(";");
+
+  for (const category of categories) {
+    console.log(category);
+  }
+};
+
+const bookCategories =
+  "science;computing;computer science;algorithms;business;operating systems;networking;electronics";
+
+// logBookCategories(bookCategories);
+
+// todo now, the opposite. Each book from the books array has the keywords property. Write a function called getKeywordsAsString that takes the books array as an argument, collects keywords from each book, removes duplicates, and then joins them to create a single string where keywords are separated by a semicolon. //
+
+const getKeywordsAsString = function (books) {
+  const keywords = [];
+
+  for (const book of books) {
+    keywords.push(...book.keywords);
+  }
+
+  const uniqueKeywords = [...new Set(keywords)];
+
+  return uniqueKeywords.join(";");
+};
+
+// console.log(getKeywordsAsString(books));
+
+// todo below is the bookChapters array that contains inner arrays. Each inner array consists of a chapter's title, and the number of a page, for example, in ['The Basics', 14], 'The Basics' is the chapter's title, and 14 is the number of a page. Write a function called logBookChapters that takes an array of arrays (like bookChapters) as an argument, and logs each chapter's name to the console together with the page number. The page number should be separated from the chapter's name with underscores (take a look at the example below). //
+
+/*
+The Basics__________ 14
+Sorting_____________ 254
+Searching___________ 372
+Graphs______________ 526
+Strings_____________ 706
+*/
+
+// const logBookChapters = function (book) {
+//   for (const [chapter, pages] of bookChapters) {
+//     const output = `${chapter}${"_".repeat(20 - chapter.length)}`;
+//     console.log(`${output.padEnd(20)} ${pages}`);
+//   }
+// };
+
+const logBookChapters = function (book) {
+  for (const [chapter, pages] of book) {
+    console.log(chapter.padEnd(20, "_") + " " + pages);
+  }
+};
+
+const bookChapters = [
+  ["The Basics", 14],
+  ["Sorting", 254],
+  ["Searching", 372],
+  ["Graphs", 526],
+  ["Strings", 706],
+];
+
+// logBookChapters(bookChapters);
