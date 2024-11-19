@@ -740,3 +740,5 @@ const bookChapters = [
 ];
 
 // logBookChapters(bookChapters);
+
+console.log("teste");
