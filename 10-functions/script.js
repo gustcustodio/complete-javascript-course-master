@@ -254,24 +254,32 @@ GOOD LUCK 😀
 */
 
 const $answerPollButton = document.querySelector(".poll");
+const displayResults = function (type) {
+  if (type === "array") {
+    console.log(poll.answers);
+  }
+  if (type === "string") {
+    let str = `Poll results are `;
+    for (const num of poll.answers) {
+      str += `${num}, `;
+    }
+    let strFinal = str.slice(0, -2) + ".";
+    console.log(strFinal);
+  }
+};
 const registerNewAnswer = function () {
   // verificar se o input está correto //
   let answer = null;
   do {
-    answer = Number(
-      prompt(`
-      What is your favourite programming language?
-          0: JavaScript
-          1: Python
-          2: Rust
-          3: C++`)
-    );
+    answer = Number(prompt(`${poll.question}\n${poll.options.join("\n")}`));
 
     if (isNaN(answer)) alert("Insira um valor válido!");
     if (answer < 0) alert("Insira um valor válido!");
     if (answer > 3) alert("Insira um valor válido!");
   } while (isNaN(answer) || answer < 0 || answer > 3);
   // aumentar o valor no array answers de acordo com o input //
+  poll.answers[answer] = poll.answers[answer] + 1;
+  poll.displayResults("array");
 };
 
 const poll = {
@@ -279,6 +287,7 @@ const poll = {
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
   answers: new Array(4).fill(0),
   registerNewAnswer,
+  displayResults,
 };
 
 $answerPollButton.addEventListener("click", registerNewAnswer);
