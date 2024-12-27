@@ -254,7 +254,7 @@ GOOD LUCK 😀
 */
 
 const $answerPollButton = document.querySelector(".poll");
-const displayResults = function (type) {
+const displayResults = function (type = "array") {
   if (type === "array") {
     console.log(poll.answers);
   }
@@ -279,7 +279,8 @@ const registerNewAnswer = function () {
   } while (isNaN(answer) || answer < 0 || answer > 3);
   // aumentar o valor no array answers de acordo com o input //
   poll.answers[answer] = poll.answers[answer] + 1;
-  poll.displayResults("array");
+  // poll.displayResults();
+  poll.displayResults("string");
 };
 
 const poll = {
@@ -288,6 +289,17 @@ const poll = {
   answers: new Array(4).fill(0),
   registerNewAnswer,
   displayResults,
+  // displayResults(type = "array") {
+  //   if (type === "array") {
+  //     console.log(this.answers);
+  //   } else if (type === "string") {
+  //     console.log(`Poll results are ${this.answers.join(", ")}`);
+  //   }
+  // },
 };
 
 $answerPollButton.addEventListener("click", registerNewAnswer);
+
+// poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
