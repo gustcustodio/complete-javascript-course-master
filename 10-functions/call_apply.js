@@ -1,3 +1,4 @@
+"use strict";
 // ! call method ! //
 // ? syntax ? //
 // ? func.call(thisArg, arg1, arg2, ...); ? //
