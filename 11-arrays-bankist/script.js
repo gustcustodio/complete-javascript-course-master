@@ -65,22 +65,22 @@ const inputClosePin = document.querySelector(".form__input--pin");
 /////////////////////////////////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ["USD", "United States dollar"],
-  ["EUR", "Euro"],
-  ["GBP", "Pound sterling"],
-]);
+// const currencies = new Map([
+//   ["USD", "United States dollar"],
+//   ["EUR", "Euro"],
+//   ["GBP", "Pound sterling"],
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////////////////////////////////
 
 let arr = ["a", "b", "c", "d", "e"];
-
-// ! SLICE ! //
-// the slice() method returns selected elements in an array, as a new array
-// the slice() method selects from a given start, up to a (not inclusive) given end
-// the slice() method does not change the original array
+/*
+! SLICE !
+* the slice() method returns selected elements in an array, as a new array
+* the slice() method selects from a given start, up to a (not inclusive) given end
+* the slice() method does not change the original array
 console.log("---------------------- SLICE ----------------------");
 console.log(arr.slice(2));
 console.log(arr.slice(2, 4));
@@ -89,22 +89,22 @@ console.log(arr.slice(-1));
 console.log(arr.slice(1, -2));
 console.log(arr.slice());
 console.log([...arr]);
-/*
+
 const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
 const citrus = fruits.slice(1, 3);
 console.log(citrus);
 const myBest = fruits.slice(-3, -1);
 console.log(myBest);
-*/
-// ! SPLICE ! //
-// the splice() method adds and/or removes array elements
-// the splice() method overwrites the original array
+
+! SPLICE !
+* the splice() method adds and/or removes array elements
+* the splice() method overwrites the original array
 console.log("---------------------- SPLICE ----------------------");
 arr.splice(-1);
 console.log(arr);
 arr.splice(1, 2);
 console.log(arr);
-/*
+
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
 fruits.splice(2, 0, "Lemon", "Kiwi");
 console.log(fruits);
@@ -112,43 +112,134 @@ fruits.splice(2, 2);
 console.log(fruits);
 fruits.splice(2, 1, "Lemon", "Kiwi");
 console.log(fruits);
-*/
-// ! REVERSE ! //
-// the reverse() method reverses the order of the elements in an array
-// the reverse() method overwrites the original array
+
+! REVERSE ! 
+* the reverse() method reverses the order of the elements in an array
+* the reverse() method overwrites the original array
 console.log("---------------------- REVERSE ----------------------");
 const arr2 = ["j", "i", "h", "g", "f"];
 arr2.reverse();
 console.log(arr2);
-/*
+
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
 fruits.reverse();
 console.log(fruits);
-*/
-// ! CONCAT ! //
-// the concat() method concatenates (joins) two or more arrays
-// the concat() method returns a new array, containing the joined arrays
-// the concat() method does not change the existing arrays
+! CONCAT !
+* the concat() method concatenates (joins) two or more arrays
+* the concat() method returns a new array, containing the joined arrays
+* the concat() method does not change the existing arrays
 console.log("---------------------- CONCAT ----------------------");
 const letters = arr.concat(arr2);
 console.log(letters);
 console.log([...arr, ...arr2]);
-// ! JOIN ! //
-// the join() method returns an array as a string
-// the join() method does not change the original array
+! JOIN !
+* the join() method returns an array as a string
+* the join() method does not change the original array
 console.log("---------------------- JOIN ----------------------");
 console.log(letters.join(" - "));
-// ! AT ! //
-// the at() method returns an indexed element from an array
-// the at() method returns the same as []
+! AT !
+* the at() method returns an indexed element from an array
+* the at() method returns the same as []
 console.log("---------------------- AT ----------------------");
 const arr3 = [23, 11, 64];
 console.log(arr3[0]);
 console.log(arr3.at(0));
-// getting last array element
+* getting last array element
 console.log(arr3[arr3.length - 1]);
 console.log(arr3.slice(-1)[0]);
 console.log(arr3.at(-1));
 
 console.log("jonas".at(0));
 console.log("jonas".at(-1));
+! FOREACH ! 
+* the forEach() method calls a function for each element in an array
+* the forEach() method is not executed for empty elements
+? syntax: array.forEach(function(currentValue, index, arr), thisValue)
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements) {
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdraw ${Math.abs(movement)}`);
+  }
+}
+
+console.log("---------------------- FOREACH ----------------------");
+
+movements.forEach(function (movement, index, array) {
+  if (movement > 0) {
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdraw ${Math.abs(movement)}`);
+  }
+});
+
+0: function(200)
+1: function(450)
+2: function(-400)
+...
+let sum = 0;
+const numbers = [65, 44, 12, 4];
+numbers.forEach(myFunction);
+
+function myFunction(item) {
+  sum += item;
+}
+
+console.log(sum);
+
+const numbers = [65, 44, 12, 4];
+numbers.forEach(myFunction);
+
+function myFunction(item, index, array) {
+  array[index] = item * 10;
+}
+
+console.log(numbers);
+
+const numbers = [10, 20, 30];
+
+numbers.forEach(function (num) {
+  console.log(num);
+});
+
+const fruits = ["Apple", "Banana", "Cherry"];
+
+fruits.forEach((fruit, index) => {
+  console.log(`Index ${index}: ${fruit}.`);
+});
+
+const people = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 35 },
+];
+
+people.forEach((person) => {
+  console.log(`${person.name} is ${person.age} years old.`);
+});
+
+! FOREACH WITH MAPS !
+console.log("---------------------- MAPS ----------------------");
+const currencies = new Map([
+  ["USD", "United States dollar"],
+  ["EUR", "Euro"],
+  ["GBP", "Pound sterling"],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value} // ${map}`);
+});
+
+! FOREACH WITH SETS !
+console.log("---------------------- SETS ----------------------");
+const currenciesUnique = new Set(["USD", "GBP", "USD", "EUR", "EUR"]);
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function (value, key, set) {
+  console.log(`${value}: ${key} // ${set}`);
+});
+*/
