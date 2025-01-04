@@ -82,6 +82,19 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
+  });
+};
+
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 // LECTURES
@@ -306,6 +319,11 @@ checkDogs(dogsJulia, dogsKate);
 */
 /*
 ! MAP !
+* map() creates a new array from calling a function for every array element
+* map() does not execute the function for empty elements
+* map() does not change the original array
+? syntax: array.map(function(currentValue, index, arr), thisValue)
+
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 
@@ -325,4 +343,26 @@ const movementsDescriptions = movements.map(
 );
 
 console.log(movementsDescriptions);
+
+const array = [1, 4, 9, 16];
+const map = array.map((x) => x * 2);
+console.log(map);
+
+const numbers = [4, 9, 16, 25];
+const newArr = numbers.map(Math.sqrt);
+console.log(newArr);
+
+function myFunction(num) {
+  return num * 10;
+}
+
+const numbers1 = [65, 44, 12, 4];
+const newArr1 = numbers1.map(myFunction);
+console.log(newArr1);
+
+const map1 = Array.prototype.map;
+const a = map1.call("Hello World", function (x) {
+  return x.charCodeAt(0);
+});
+console.log(a);
 */
