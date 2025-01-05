@@ -82,6 +82,13 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -344,6 +351,8 @@ const movementsDescriptions = movements.map(
 
 console.log(movementsDescriptions);
 
+// more examples //
+
 const array = [1, 4, 9, 16];
 const map = array.map((x) => x * 2);
 console.log(map);
@@ -366,3 +375,108 @@ const a = map1.call("Hello World", function (x) {
 });
 console.log(a);
 */
+/*
+! FILTER !
+? the filter() method creates a new array filled with elements that pass a test provided by a function
+? the filter() method does not execute the function for empty elements
+? the filter() method does not change the original array
+? syntax: array.filter(function(currentValue, index, arr), thisValue)
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawals = movements.filter((mov) => mov < 0);
+console.log(withdrawals);
+
+// more examples //
+const words = ["spray", "elite", "exuberant", "destruction", "present"];
+const result = words.filter((word) => word.length > 6);
+console.log(result);
+
+const a = [10, , 8, 7, , 5, 4, 3, 2, 1];
+console.log(a.filter((x) => x < 3));
+console.log(a.filter((x, i) => i % 2 === 0));
+console.log(a);
+console.log(a.filter((x) => x !== undefined && x !== null));
+*/
+/*
+! REDUCE ! 
+? the reduce() method executes a reducer function for array element
+? the reduce() method returns a single value: the function's accumulated result
+? the reduce() method does not execute the function for empty array elements
+? the reduce() method does not change the original array
+? syntax: array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const balance = movements.reduce(function (acc, curr, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + curr;
+// }, 0);
+// console.log(balance);
+
+const balance = movements.reduce((acc, curr) => acc + curr, 0);
+console.log(`Reduce: ${balance}`);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(`For: ${balance2}`);
+
+// maximum value //
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) {
+    return acc;
+  } else {
+    return mov;
+  }
+}, movements[0]);
+console.log(`Maximum value: ${max}`);
+
+// more examples //
+const a = [1, 2, 3, 4, 5];
+console.log(a.reduce((x, y) => x + y, 0));
+console.log(a.reduce((x, y) => x * y, 1));
+*/
+/////////////////////////////////////////////////////////////////////////////
+// ! Coding Challenge #2 ! //
+
+/* 
+Let's go back to Julia and Kate's study about dogs. This time, they want to convert dog ages to human ages and calculate the average age of the dogs in their study.
+
+Create a function 'calcAverageHumanAge', which accepts an arrays of dog's ages ('ages'), and does the following things in order:
+
+1. Calculate the dog age in human years using the following formula: if the dog is <= 2 years old, humanAge = 2 * dogAge. If the dog is > 2 years old, humanAge = 16 + dogAge * 4.
+2. Exclude all dogs that are less than 18 human years old (which is the same as keeping dogs that are at least 18 years old)
+3. Calculate the average human age of all adult dogs (you should already know from other challenges how we calculate averages 😉)
+4. Run the function for both test datasets
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+
+const data1 = [5, 2, 4, 1, 15, 8, 3];
+const data2 = [16, 6, 10, 5, 6, 1, 4];
+
+const calcAverageHumanAge = (ages) => {
+  const humanAge = ages.map((age) => (age <= 2 ? 2 * age : 16 + age * 4));
+  const moreThan18 = humanAge.filter((age) => age >= 18);
+  const average =
+    moreThan18.reduce((acc, age) => acc + age, 0) / moreThan18.length;
+
+  // console.log(humanAge);
+  // console.log(moreThan18);
+  console.log(average.toFixed(1));
+};
+
+calcAverageHumanAge(data1);
+calcAverageHumanAge(data2);
