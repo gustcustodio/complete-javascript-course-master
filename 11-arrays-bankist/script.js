@@ -80,38 +80,32 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
-
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance}€`;
 };
 
-calcDisplayBalance(account1.movements);
-
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const out = movements
+  const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter((mov) => mov > 0)
-    .map((deposit) => (deposit * 1.2) / 100)
+    .map((deposit) => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
-
-calcDisplaySummary(account1.movements);
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -124,7 +118,37 @@ const createUsernames = function (accs) {
 };
 
 createUsernames(accounts);
-console.log(accounts);
+// console.log(accounts);
+
+// * event handler
+let currentAccount;
+
+btnLogin.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  // checks the user //
+  currentAccount = accounts.find(
+    (acc) => acc.username === inputLoginUsername.value
+  );
+
+  // checks the pin //
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // display UI and message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(" ")[0]
+    }`;
+    containerApp.style.opacity = 1;
+    // clear input fields
+    inputLoginUsername.value = inputLoginPin.value = "";
+    inputLoginPin.blur();
+    // display movements
+    displayMovements(currentAccount.movements);
+    // display balance
+    calcDisplayBalance(currentAccount.movements);
+    // display summary
+    calcDisplaySummary(currentAccount);
+  }
+});
 
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -401,9 +425,9 @@ console.log(a);
 */
 /*
 ! FILTER !
-? the filter() method creates a new array filled with elements that pass a test provided by a function
-? the filter() method does not execute the function for empty elements
-? the filter() method does not change the original array
+* the filter() method creates a new array filled with elements that pass a test provided by a function
+* the filter() method does not execute the function for empty elements
+* the filter() method does not change the original array
 ? syntax: array.filter(function(currentValue, index, arr), thisValue)
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -433,10 +457,10 @@ console.log(a.filter((x) => x !== undefined && x !== null));
 */
 /*
 ! REDUCE ! 
-? the reduce() method executes a reducer function for array element
-? the reduce() method returns a single value: the function's accumulated result
-? the reduce() method does not execute the function for empty array elements
-? the reduce() method does not change the original array
+* the reduce() method executes a reducer function for array element
+* the reduce() method returns a single value: the function's accumulated result
+* the reduce() method does not execute the function for empty array elements
+* the reduce() method does not change the original array
 ? syntax: array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -534,7 +558,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-
+/*
 const data1 = [5, 2, 4, 1, 15, 8, 3];
 const data2 = [16, 6, 10, 5, 6, 1, 4];
 
@@ -547,3 +571,39 @@ const calcAverageHumanAge = (ages) => {
 
 console.log(calcAverageHumanAge(data1));
 console.log(calcAverageHumanAge(data2));
+*/
+/*
+! FIND METHOD !
+* the find() method returns the value of the first element that passes a test
+* the find() method executes a function for each array element
+* the find() method returns undefined if no elements are found
+* the find() method does not execute the function for empty elements
+* the find() method does not change the original array
+? syntax: array.find(function(currentValue, index, arr),thisValue)
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+const firstWithdraw = movements.find((mov) => mov < 0);
+console.log(firstWithdraw);
+
+console.log(accounts);
+
+const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+console.log(account);
+
+const ages = [3, 10, 18, 20];
+console.log(ages);
+const checkAge = ages.find((age) => age > 18);
+console.log(checkAge);
+const checkAge2 = ages.find((age) => age > 30);
+console.log(checkAge2);
+
+const inventory = [
+  { name: "maças", quantity: 2 },
+  { name: "bananas", quantity: 0 },
+  { name: "cherries", quantity: 5 },
+];
+
+const result = inventory.find(fruit => fruit.name === "cherries");
+console.log(result);
+*/
