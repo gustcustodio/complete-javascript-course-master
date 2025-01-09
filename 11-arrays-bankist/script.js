@@ -80,31 +80,31 @@ const displayMovements = function (movements) {
   });
 };
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance}€`;
+const calcDisplayBalance = function (acc) {
+  // creates the balance property on the referenced object
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 const calcDisplaySummary = function (acc) {
-  const incomes = acc.movements
-    .filter((mov) => mov > 0)
-    .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  const incomes = acc.movements // calcula a soma total dos depósitos
+    .filter((mov) => mov > 0) // filtra apenas valores positivos
+    .reduce((acc, mov) => acc + mov, 0); // soma os depósitos
+  labelSumIn.textContent = `${incomes}€`; // atualiza o texto com o total
 
-  const out = acc.movements
-    .filter((mov) => mov < 0)
-    .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  const out = acc.movements // calcula a soma total dos saques
+    .filter((mov) => mov < 0) // filtra apenas valores negativos
+    .reduce((acc, mov) => acc + mov, 0); // soma os saques
+  labelSumOut.textContent = `${Math.abs(out)}€`; // exibe o valor absoluto
 
-  const interest = acc.movements
-    .filter((mov) => mov > 0)
-    .map((deposit) => (deposit * acc.interestRate) / 100)
-    .filter((int, i, arr) => {
-      // console.log(arr);
+  const interest = acc.movements // calcula os juros baseados nos depósitos
+    .filter((mov) => mov > 0) // filtra apenas os depósitos
+    .map((deposit) => (deposit * acc.interestRate) / 100) // calcula os juros
+    .filter((int, i, arr) => { // filtra os juros que são >= a 1
       return int >= 1;
     })
-    .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+    .reduce((acc, int) => acc + int, 0); // soma os juros válidos
+  labelSumInterest.textContent = `${interest}€`; // atualiza o texto com o total de juros
 };
 
 const createUsernames = function (accs) {
@@ -119,6 +119,15 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 // console.log(accounts);
+
+const updateUI = function (acc) {
+  // display movements
+  displayMovements(acc.movements);
+  // display balance
+  calcDisplayBalance(acc);
+  // display summary
+  calcDisplaySummary(acc);
+};
 
 // * event handler
 let currentAccount;
@@ -141,12 +150,31 @@ btnLogin.addEventListener("click", (e) => {
     // clear input fields
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
-    // display movements
-    displayMovements(currentAccount.movements);
-    // display balance
-    calcDisplayBalance(currentAccount.movements);
-    // display summary
-    calcDisplaySummary(currentAccount);
+    // update UI
+    updateUI(currentAccount);
+  }
+});
+
+btnTransfer.addEventListener("click", (e) => {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    (acc) => acc.username === inputTransferTo.value
+  );
+  // clear input fields
+  inputTransferAmount.value = inputTransferTo.value = "";
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc.username !== currentAccount.username
+  ) {
+    // doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+    // update UI
+    updateUI(currentAccount);
   }
 });
 
