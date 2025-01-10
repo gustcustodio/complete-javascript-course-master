@@ -100,7 +100,8 @@ const calcDisplaySummary = function (acc) {
   const interest = acc.movements // calcula os juros baseados nos depósitos
     .filter((mov) => mov > 0) // filtra apenas os depósitos
     .map((deposit) => (deposit * acc.interestRate) / 100) // calcula os juros
-    .filter((int, i, arr) => { // filtra os juros que são >= a 1
+    .filter((int, i, arr) => {
+      // filtra os juros que são >= a 1
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0); // soma os juros válidos
@@ -129,7 +130,7 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-// * event handler
+//////////////////////////// * event handlers * ////////////////////////////
 let currentAccount;
 
 btnLogin.addEventListener("click", (e) => {
@@ -176,6 +177,28 @@ btnTransfer.addEventListener("click", (e) => {
     // update UI
     updateUI(currentAccount);
   }
+});
+
+btnClose.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (
+    currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)
+  ) {
+    const index = accounts.findIndex(
+      (acc) => acc.username === currentAccount.username
+    );
+    console.log(index);
+
+    // delete account
+    accounts.splice(index, 1);
+
+    // hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = "";
 });
 
 /////////////////////////////////////////////////////////////////////////////
@@ -634,4 +657,46 @@ const inventory = [
 
 const result = inventory.find(fruit => fruit.name === "cherries");
 console.log(result);
+*/
+/*
+! FINDINDEX !
+* the findIndex() method executes a function for each array element
+* the findIndex() method returns the index (position) of the first element that passes a test
+* the findIndex() method returns -1 if no match is found
+* the findIndex() method does not execute the function for empty array elements
+* the findIndex() method does not change the original array
+? syntax: array.findIndex(function(currentValue, index, arr), thisValue)
+
+const ages = [3, 10, 18, 20];
+console.log(ages.findIndex((age) => age > 18));
+console.log(ages.findIndex((age) => age > 30));
+*/
+/*
+! FINDLAST AND FINDLASTINDEX !
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+* the findLast() method returns the value of the last element that passes a test
+* the findLast() method executes a function for each array element
+* the findLast() method returns undefined if no elements are found
+* the findLast() method does not execute the function for empty elements
+* the findLast() method does not change the original array
+? syntax: array.findLast(function(currentValue, index, arr),thisValue)
+
+const lastWithdrawal = movements.findLast((mov) => mov < 0);
+console.log(lastWithdrawal);
+
+* the findLastIndex() method executes a function for each array element
+* the findLastIndex() method returns the index (position) of the last element that passes a test
+* the findLastIndex() method returns -1 if no match is found
+* the findLastIndex() method does not execute the function for empty array elements
+* the findLastIndex() method does not change the original array
+? array.findLastIndex(function(currentValue, index, arr), thisValue)
+
+// "Your latest large movement was X movements ago"
+
+const latestLargeMov = movements.findLastIndex((mov) => Math.abs(mov) > 1000);
+console.log(
+  `Your latest large movement was ${
+    movements.length - latestLargeMov
+  } movement(s) ago.`
+);
 */
