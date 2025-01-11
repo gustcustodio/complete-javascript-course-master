@@ -1,0 +1,40 @@
+// * ARRAY METHODS * //
+// ! SLICE ! //
+// const str = "JavaScript";
+// console.log(str.slice(4));
+// console.log(str.slice(2, 8));
+// console.log(str.slice(-5));
+// console.log(str.slice(1, -6));
+// console.log(str.slice(11));
+// const a = [1, 2, 3, 4, 5];
+// console.log(a.slice(0,3));
+// console.log(a.slice(3));
+// console.log(a.slice(1, -1));
+// console.log(a.slice(-3, -2));
+//  ! SPLICE ! //
+// const arr = [1, 2, "a", "b", "2", "c", 1, "a", 45];
+// const x = arr.splice(5);
+// console.log(arr);
+// console.log(x);
+// const x1 = arr.splice(5, 2);
+// console.log(arr);
+// console.log(x1);
+// const x2 = arr.splice(5, 2, "x", "y");
+// console.log(arr);
+// console.log(x2);
+const a = [1, 2, 3, 4, 5, 6, 7, 8];
+// const x = a.splice(4);
+// console.log(a);
+// console.log(x);
+// const x2 = a.splice(1, 2);
+// console.log(a);
+// console.log(x2);
+// const x3 = a.splice(1, 1);
+// console.log(a);
+// console.log(x3);
+// const x4 = a.splice(2, 0, "a", "b");
+// console.log(a);
+// console.log(x4);
+const x5 = a.splice(2, 2, [1, 2], 3);
+console.log(a);
+console.log(x5);
