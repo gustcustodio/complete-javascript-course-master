@@ -95,3 +95,48 @@
 // console.log(arr1["0"]);
 // console.log(arr1[arr1.length - 1]);
 // console.log(arr1.at(-1));
+// * MÉTODOS DE ARRAY DE ECMASCRIPT 5 * //
+// ! FOREACH ! //
+// const data = [1, 2, 3, 4, 5];
+// let sum = 0;
+// data.forEach(function (value) {
+//   sum += value;
+// });
+// data.forEach((value) => (sum += value));
+// console.log(sum);
+// data.forEach((v, i, a) => {
+//   a[i] = v + 1;
+// });
+// console.log(data);
+// const currencies = new Map([
+//   ["USD", "United States dollar"],
+//   ["EUR", "Euro"],
+//   ["GBP", "Pound sterling"],
+// ]);
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key}: ${value}`);
+// });
+// ! MAP ! //
+// const a = [1, 2, 3];
+// const b = a.map((x) => x * x);
+// console.log(b);
+// const numbers = [4, 9, 16, 25];
+// const newArr = numbers.map((x) => Math.sqrt(x));
+// console.log(numbers);
+// console.log(newArr);
+// function getFullName(item) {
+//   return [item.firstName, item.lastName].join(" ");
+// }
+// const persons = [
+//   { firstName: "Malcom", lastName: "Reynolds" },
+//   { firstName: "Kaylee", lastName: "Frye" },
+//   { firstName: "Jayne", lastName: "Cobb" },
+// ];
+// console.log(persons.map(getFullName));
+// ! FILTER ! //
+const words = ["spray", "elite", "exuberant", "destruction", "present"];
+const result = words.filter((word) => word.length > 6);
+console.log(result);
+const numbers = [12, 5, 6, 130, 44];
+const filtered = numbers.filter((number) => number >= 10);
+console.log(filtered);
