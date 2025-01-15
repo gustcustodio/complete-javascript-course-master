@@ -134,9 +134,46 @@
 // ];
 // console.log(persons.map(getFullName));
 // ! FILTER ! //
-const words = ["spray", "elite", "exuberant", "destruction", "present"];
-const result = words.filter((word) => word.length > 6);
-console.log(result);
-const numbers = [12, 5, 6, 130, 44];
-const filtered = numbers.filter((number) => number >= 10);
-console.log(filtered);
+// const words = ["spray", "elite", "exuberant", "destruction", "present"];
+// const result = words.filter((word) => word.length > 6);
+// console.log(result);
+// const numbers = [12, 5, 6, 130, 44];
+// const filtered = numbers.filter((number) => number >= 10);
+// console.log(filtered);
+// const a = [5, 4, 3, 2, 1];
+// const smallValues = a.filter((x) => x < 3);
+// console.log(smallValues);
+// const everyOther = a.filter((x, i) => i % 2 === 0);
+// console.log(everyOther);
+// ! REDUCE ! //
+// const arr = [1, 2, 3, 4, 5];
+// const resultado = arr.reduce((acc, valorAtual) => 2 * acc + valorAtual);
+// console.log(resultado);
+// const a = [1, 2, 3, 4, 5];
+// const sum = a.reduce((x, y) => x + y, 0);
+// console.log(sum);
+// const product = a.reduce((x, y) => x * y, 1);
+// console.log(product);
+// const max = a.reduce((x, y) => (x > y ? x : y));
+// console.log(max);
+// * how reduce() works without an initial value * //
+// const array = [15, 16, 17, 18, 19];
+// function reducer(accumulator, currentValue, index) {
+//   const returns = accumulator + currentValue;
+//   console.log(
+//     `accumulator: ${accumulator}, currentValue: ${currentValue}, index: ${index}, returns: ${returns}`
+//   );
+//   return returns;
+// }
+// array.reduce(reducer);
+// * how reduce() works with an initial value * //
+// console.log(
+//   [15, 16, 17, 18, 19].reduce(
+//     (accumulator, currentValue) => accumulator + currentValue,
+//     10
+//   )
+// );
+// * reduce() skips missing elements in sparse arrays, but it does not skip undefined values * //
+// console.log([1, 2, , 4].reduce((a, b) => a + b));
+// console.log([1, 2, undefined, 4].reduce((a, b) => a + b));
+// ! ! CHAINING METHODS ! //
