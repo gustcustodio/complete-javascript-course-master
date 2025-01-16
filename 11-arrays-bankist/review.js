@@ -177,3 +177,36 @@
 // console.log([1, 2, , 4].reduce((a, b) => a + b));
 // console.log([1, 2, undefined, 4].reduce((a, b) => a + b));
 // ! ! CHAINING METHODS ! //
+// let username = window.prompt("Enter your username: ");
+// username = username.trim();
+// let letter = username.charAt(0);
+// letter = letter.toUpperCase();
+// let extraChars = username.slice(1);
+// extraChars = extraChars.toLowerCase();
+// username = letter + extraChars;
+// console.log(username);
+// username =
+//   username.trim().charAt(0).toUpperCase() +
+//   username.trim().slice(1).toLowerCase();
+// console.log(username);
+// const firstName = "   Rajat   ";
+// console.log(firstName);
+// const modifiedName = firstName.toUpperCase().trim();
+// console.log(modifiedName);
+// ! FIND METHOD ! //
+// const array = [5, 12, 8, 130, 44];
+// const found = array.find((element) => element > 10);
+// console.log(found);
+// const a = [1, 2, 3, 4, 5];
+// console.log(a.find((x) => x % 5 === 0)); // 5
+// console.log(a.find((x) => x % 7 === 0)); // undefined
+// const arr = [12, 17, 60, 319];
+// console.log(arr.find((el) => el > 21)); // 60
+// ! FINDINDEX ! //
+// const a = [1, 2, 3, 4, 5];
+// console.log(a.findIndex((x) => x === 3)); // 2
+// console.log(a.findIndex((x) => x < 0)); // -1
+// const arr = [12, 17, 60, 319];
+// console.log(arr.findIndex((x) => x > 81)); // 3
+// const array = [5, 12, 8, 130, 44];
+// console.log(array.findIndex((x) => x > 13)); // 3
