@@ -1,58 +1,59 @@
 // * ARRAY METHODS * //
 // ! SLICE ! //
 // const str = "JavaScript";
-// console.log(str.slice(4));
-// console.log(str.slice(2, 8));
-// console.log(str.slice(-5));
-// console.log(str.slice(1, -6));
-// console.log(str.slice(11));
+// console.log(str.slice(4)); // "Script"
+// console.log(str.slice(2, 8)); // "vaScri"
+// console.log(str.slice(-5)); // "cript"
+// console.log(str.slice(1, -6)); // "ava"
+// console.log(str.slice(11)); // " "
 // const a = [1, 2, 3, 4, 5];
-// console.log(a.slice(0,3));
-// console.log(a.slice(3));
-// console.log(a.slice(1, -1));
-// console.log(a.slice(-3, -2));
+// console.log(a.slice(0, 3)); // [1, 2, 3]
+// console.log(a.slice(3)); // [4, 5]
+// console.log(a.slice(1, -1)); // [2, 3, 4]
+// console.log(a.slice(-3, -2)); // [3]
 //  ! SPLICE ! //
 // const arr = [1, 2, "a", "b", "2", "c", 1, "a", 45];
 // const x = arr.splice(5);
-// console.log(arr);
-// console.log(x);
+// console.log(arr); // [1, 2, "a", "b", "2"]
+// console.log(x); // ["c", 1, "a", 45]
 // const x1 = arr.splice(5, 2);
-// console.log(arr);
-// console.log(x1);
+// console.log(arr); // [1, 2, "a", "b", "2", "a", 45]
+// console.log(x1); // ["c", 1]
 // const x2 = arr.splice(5, 2, "x", "y");
-// console.log(arr);
-// console.log(x2);
+// console.log(arr); // [1, 2, "a", "b", "2", "x", "y", "a", 45]
+// console.log(x2); // ["c", 1]
 // const a = [1, 2, 3, 4, 5, 6, 7, 8];
 // const x = a.splice(4);
-// console.log(a);
-// console.log(x);
+// console.log(a); // [1, 2, 3, 4]
+// console.log(x); // [5, 6, 7, 8]
 // const x2 = a.splice(1, 2);
-// console.log(a);
-// console.log(x2);
+// console.log(a); // [1, 4, 5, 6, 7, 8]
+// console.log(x2); // [2, 3]
 // const x3 = a.splice(1, 1);
-// console.log(a);
-// console.log(x3);
+// console.log(a); // [1, 3, 4, 5, 6, 7, 8]
+// console.log(x3); // [2]
 // const x4 = a.splice(2, 0, "a", "b");
-// console.log(a);
-// console.log(x4);
+// console.log(a); // [1, 2, "a", "b", 3, 4, 5, 6, 7, 8]
+// console.log(x4); // [] 
 // const x5 = a.splice(2, 2, [1, 2], 3);
-// console.log(a);
-// console.log(x5);
-// ! REVERSE ! //
+// console.log(a); // [1, 2, [1, 2], 3, 5, 6, 7, 8]
+// console.log(x5); // [3, 4]
+// ! REVERSE ! //  
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
-// console.log(fruits.reverse());
-// console.log(fruits);
-// const numbers = [3, 2, 4, 1, 5];
+// console.log(fruits.reverse()); // ["Mango", "Apple", "Orange", "Banana"]
+// console.log(fruits); // ["Mango", "Apple", "Orange", "Banana"]
+const numbers = [3, 2, 4, 1, 5];
 // * the reverse() method returns the reference to the same array * //
-// const reversed = numbers.reverse();
-// reversed[0] = 5;
-// console.log(numbers[0]);
-// numbers[2] = 3;
-// console.log(numbers);
-// console.log(reversed);
-// const reverted = [...numbers].reverse();
-// reverted[0] = 5;
-// console.log(numbers[0]);
+const reversed = numbers.reverse(); // [5, 1, 4, 2, 3]
+reversed[0] = 5;
+console.log(numbers[0]); // 5
+numbers[2] = 3;
+console.log(numbers); // [5, 1, 3, 2, 3]
+console.log(reversed); // [5, 1, 3, 2, 3]
+const reverted = [...numbers].reverse();
+reverted[0] = 8;
+console.log(reverted); // [8, 2, 3, 1, 5]
+console.log(numbers[0]); // 5
 // ! CONCAT ! //
 // const arr1 = ["Cecilie", "Lone"];
 // const arr2 = ["Emil", "Tobias", "Linus"];
@@ -210,3 +211,15 @@
 // console.log(arr.findIndex((x) => x > 81)); // 3
 // const array = [5, 12, 8, 130, 44];
 // console.log(array.findIndex((x) => x > 13)); // 3
+// ! FINDLAST ! //
+// const ages = [3, 10, 18, 20, 12, 30, 11, 22, 37, 5, 19, 55, 17, 8];
+// console.log(ages.findLast((age) => age > 20)); // 55
+// console.log(ages.findLast((age) => age > 60)); // undefined
+// const array = [5, 12, 50, 130, 44];
+// console.log(array.findLast((element) => element > 45)); // 130
+// ! FINDLASTINDEX ! //
+// const ages = [3, 10, 18, 20, 5, 7, 22, 33, 44, 13, 9];
+// console.log(ages.findLastIndex(age => age > 18)); // 8
+// console.log(ages.findLastIndex(age => age > 50)); // -1
+// const array = [5, 12, 50, 130, 44];
+// console.log(array.findLastIndex((element) => element > 45)); // 3
