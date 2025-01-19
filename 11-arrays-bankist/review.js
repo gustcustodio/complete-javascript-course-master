@@ -42,61 +42,67 @@
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
 // console.log(fruits.reverse()); // ["Mango", "Apple", "Orange", "Banana"]
 // console.log(fruits); // ["Mango", "Apple", "Orange", "Banana"]
-const numbers = [3, 2, 4, 1, 5];
+// const numbers = [3, 2, 4, 1, 5];
 // * the reverse() method returns the reference to the same array * //
-const reversed = numbers.reverse(); // [5, 1, 4, 2, 3]
-reversed[0] = 5;
-console.log(numbers[0]); // 5
-numbers[2] = 3;
-console.log(numbers); // [5, 1, 3, 2, 3]
-console.log(reversed); // [5, 1, 3, 2, 3]
-const reverted = [...numbers].reverse();
-reverted[0] = 8;
-console.log(reverted); // [8, 2, 3, 1, 5]
-console.log(numbers[0]); // 5
+// const reversed = numbers.reverse(); // [5, 1, 4, 2, 3]
+// reversed[0] = 5;
+// console.log(numbers[0]); // 5
+// numbers[2] = 3;
+// console.log(numbers); // [5, 1, 3, 2, 3]
+// console.log(reversed); // [5, 1, 3, 2, 3]
+// const reverted = [...numbers].reverse();
+// reverted[0] = 8;
+// console.log(reverted); // [8, 2, 3, 1, 5]
+// console.log(numbers[0]); // 5
 // ! CONCAT ! //
 // const arr1 = ["Cecilie", "Lone"];
 // const arr2 = ["Emil", "Tobias", "Linus"];
-// const childrens = arr1.concat(arr2);
+// const childrens = arr1.concat(arr2); // ["Cecilie", "Lone", "Emil", "Tobias", "Linus"]
 // console.log(childrens);
 // const letters = ["a", "b", "c"];
 // const alphaNumeric = letters.concat(1, [2, 3]);
-// console.log(alphaNumeric);
+// console.log(alphaNumeric); // ["a", "b", "c", 1, 2, 3]
 // const num1 = [[1]];
 // const num2 = [2, [3]];
 // const numbers = num1.concat(num2);
-// console.log(numbers);
+// console.log(numbers); // [[1], 2, [3]]
 // num1[0].push(4);
-// console.log(numbers);
+// console.log(numbers); // [[1, 4], 2, [3]]
+// const array1 = ["a", "b", "c"];
+// const array2 = ["d", "e", "f"];
+// const array3 = array1.concat(array2);
+// console.log(array3); // ["a", "b", "c", "d", "e", "f"]
 // ! JOIN ! //
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
-// let text = fruits.join();
-// let text = fruits.join(" and ");
+// let text = fruits.join(); // Banana,Orange,Apple,Mango
+// let text = fruits.join(" and "); // Banana and Orange and Apple and Mango
 // console.log(text);
 // const arr1 = [1, , 3];
 // const arr2 = [1, undefined, 3];
-// console.log(arr1.join());
-// console.log(arr2.join());
+// console.log(arr1.join()); // 1,,3
+// console.log(arr2.join()); // 1,undefined,3
 // const arr3 = [6, 11, "x", "y"];
 // const arr4 = arr3.join();
-// console.log(arr4);
-// console.log(typeof arr4);
+// console.log(arr4); // 6,11,x,y
+// console.log(typeof arr4); // string
 // ! AT ! //
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
 // let fruit = fruits.at(2);
-// console.log(fruit);
+// console.log(fruit); // Apple
 // const arr1 = [5, 12, 8, 130, 44];
 // let index = 2;
-// console.log(`An index of ${index} returns ${arr1.at(index)}`);
+// console.log(`An index of ${index} returns ${arr1.at(index)}`); // 8
 // index = -2;
-// console.log(`An index of ${index} returns ${arr1.at(index)}`);
-// console.log(arr1[-1]);
+// console.log(`An index of ${index} returns ${arr1.at(index)}`); // 130
+// console.log(arr1[-1]); // undefined
 // arr1["-1"] = "Propriedade de string";
-// console.log(arr1[-1]);
-// console.log(arr1["0"]);
-// console.log(arr1[arr1.length - 1]);
-// console.log(arr1.at(-1));
+// console.log(arr1[-1]); // Propriedade de string
+// console.log(arr1["0"]); // 5 
+// console.log(arr1.length); // 5 
+// console.log(arr1[arr1.length - 1]); // 44
+// console.log(arr1.at(-1)); // 44
 // * MÉTODOS DE ARRAY DE ECMASCRIPT 5 * //
+// ?  A maioria dos métodos aceita uma função como primeiro argumento e chama essa função uma vez para cada elemento (ou para alguns elementos) do array. Se o array é esparso, a função passada não é chamada para os elementos inexistentes. Na maioria dos casos, a função fornecida é chamada com três argumentos: o valor do elemento do array, o índice do elemento e o array em si. Frequentemente, apenas o primeiro desses valores de argumento é necessário e o segundo e terceiro valores podem ser ignorados. ? // 
 // ! FOREACH ! //
 // const data = [1, 2, 3, 4, 5];
 // let sum = 0;
@@ -104,11 +110,11 @@ console.log(numbers[0]); // 5
 //   sum += value;
 // });
 // data.forEach((value) => (sum += value));
-// console.log(sum);
+// console.log(sum); // 15
 // data.forEach((v, i, a) => {
 //   a[i] = v + 1;
 // });
-// console.log(data);
+// console.log(data); // [2, 3, 4, 5, 6]
 // const currencies = new Map([
 //   ["USD", "United States dollar"],
 //   ["EUR", "Euro"],
@@ -120,11 +126,11 @@ console.log(numbers[0]); // 5
 // ! MAP ! //
 // const a = [1, 2, 3];
 // const b = a.map((x) => x * x);
-// console.log(b);
+// console.log(b); // [1, 4, 9]
 // const numbers = [4, 9, 16, 25];
 // const newArr = numbers.map((x) => Math.sqrt(x));
 // console.log(numbers);
-// console.log(newArr);
+// console.log(newArr); // [2, 3, 4, 5]
 // function getFullName(item) {
 //   return [item.firstName, item.lastName].join(" ");
 // }
@@ -137,19 +143,19 @@ console.log(numbers[0]); // 5
 // ! FILTER ! //
 // const words = ["spray", "elite", "exuberant", "destruction", "present"];
 // const result = words.filter((word) => word.length > 6);
-// console.log(result);
+// console.log(result); // ["exuberant", "destruction", "present"]
 // const numbers = [12, 5, 6, 130, 44];
 // const filtered = numbers.filter((number) => number >= 10);
-// console.log(filtered);
+// console.log(filtered); // [12, 130, 44]
 // const a = [5, 4, 3, 2, 1];
 // const smallValues = a.filter((x) => x < 3);
-// console.log(smallValues);
+// console.log(smallValues); // [2, 1]
 // const everyOther = a.filter((x, i) => i % 2 === 0);
-// console.log(everyOther);
+// console.log(everyOther); // [5, 3, 1]
 // ! REDUCE ! //
-// const arr = [1, 2, 3, 4, 5];
-// const resultado = arr.reduce((acc, valorAtual) => 2 * acc + valorAtual);
-// console.log(resultado);
+const arr = [1, 2, 3, 4, 5];
+const resultado = arr.reduce((acc, valorAtual) => 2 * acc + valorAtual);
+console.log(resultado); // 57
 // const a = [1, 2, 3, 4, 5];
 // const sum = a.reduce((x, y) => x + y, 0);
 // console.log(sum);
