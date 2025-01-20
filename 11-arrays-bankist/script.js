@@ -179,6 +179,24 @@ btnTransfer.addEventListener("click", (e) => {
   }
 });
 
+btnLoan.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)
+  ) {
+    // add movement
+    currentAccount.movements.push(amount);
+    // update UI
+    updateUI(currentAccount);
+  }
+
+  inputLoanAmount.value = "";
+});
+
 btnClose.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -700,3 +718,31 @@ console.log(
   } movement(s) ago.`
 );
 */
+
+// ! SOME ! //
+// * the some() method checks if any array elements pass a test (provided as a callback function)
+// * the some() method executes the callback function once for each array element
+// * the some() method returns true (and stops) if the function returns true for one of the array elements
+// * the some() method returns false if the function returns false for all of the array elements
+// * the some() method does not execute the function for empty array elements
+// * the some() method does not change the original array
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// * EQUALITY * //
+console.log(movements.includes(-130)); // true
+// * CONDITION * //
+console.log(movements.some((mov) => mov === -130)); // true
+const anyDeposits = movements.some((mov) => mov > 0); 
+console.log(anyDeposits); // true
+// ! EVERY ! //
+// * the every() method executes a function for each array element
+// * the every() method returns true if the function returns true for all elements
+// * the every() method returns false if the function returns false for one element
+// * the every() method does not execute the function for empty elements
+// * the every() method does not change the original array
+console.log(movements.every((mov) => mov > 0)); // false
+console.log(account4.movements.every((mov) => mov > 0)); // true
+// ! SEPARATE CALLBACK ! //
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit)); // true
+console.log(movements.every(deposit)); // false
+console.log(movements.filter(deposit)); // [200, 450, 3000, 70, 1300]
