@@ -153,16 +153,16 @@
 // const everyOther = a.filter((x, i) => i % 2 === 0);
 // console.log(everyOther); // [5, 3, 1]
 // ! REDUCE ! //
-const arr = [1, 2, 3, 4, 5];
-const resultado = arr.reduce((acc, valorAtual) => 2 * acc + valorAtual);
-console.log(resultado); // 57
+// const arr = [1, 2, 3, 4, 5];
+// const resultado = arr.reduce((acc, valorAtual) => 2 * acc + valorAtual);
+// console.log(resultado); // 57
 // const a = [1, 2, 3, 4, 5];
 // const sum = a.reduce((x, y) => x + y, 0);
-// console.log(sum);
+// console.log(sum); // 15
 // const product = a.reduce((x, y) => x * y, 1);
-// console.log(product);
+// console.log(product); // 120
 // const max = a.reduce((x, y) => (x > y ? x : y));
-// console.log(max);
+// console.log(max); // 5
 // * how reduce() works without an initial value * //
 // const array = [15, 16, 17, 18, 19];
 // function reducer(accumulator, currentValue, index) {
@@ -181,8 +181,8 @@ console.log(resultado); // 57
 //   )
 // );
 // * reduce() skips missing elements in sparse arrays, but it does not skip undefined values * //
-// console.log([1, 2, , 4].reduce((a, b) => a + b));
-// console.log([1, 2, undefined, 4].reduce((a, b) => a + b));
+// console.log([1, 2, , 4].reduce((a, b) => a + b)); // 7
+// console.log([1, 2, undefined, 4].reduce((a, b) => a + b)); // NaN
 // ! ! CHAINING METHODS ! //
 // let username = window.prompt("Enter your username: ");
 // username = username.trim();
@@ -203,7 +203,7 @@ console.log(resultado); // 57
 // ! FIND METHOD ! //
 // const array = [5, 12, 8, 130, 44];
 // const found = array.find((element) => element > 10);
-// console.log(found);
+// console.log(found); // 12
 // const a = [1, 2, 3, 4, 5];
 // console.log(a.find((x) => x % 5 === 0)); // 5
 // console.log(a.find((x) => x % 7 === 0)); // undefined
