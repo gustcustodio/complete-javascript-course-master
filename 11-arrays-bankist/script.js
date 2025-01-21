@@ -718,31 +718,125 @@ console.log(
   } movement(s) ago.`
 );
 */
-
-// ! SOME ! //
-// * the some() method checks if any array elements pass a test (provided as a callback function)
-// * the some() method executes the callback function once for each array element
-// * the some() method returns true (and stops) if the function returns true for one of the array elements
-// * the some() method returns false if the function returns false for all of the array elements
-// * the some() method does not execute the function for empty array elements
-// * the some() method does not change the original array
+/*
+! SOME !
+* the some() method checks if any array elements pass a test (provided as a callback function)
+* the some() method executes the callback function once for each array element
+* the some() method returns true (and stops) if the function returns true for one of the array elements
+* the some() method returns false if the function returns false for all of the array elements
+* the some() method does not execute the function for empty array elements
+* the some() method does not change the original array
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// * EQUALITY * //
+* EQUALITY * 
 console.log(movements.includes(-130)); // true
-// * CONDITION * //
+* CONDITION *
 console.log(movements.some((mov) => mov === -130)); // true
 const anyDeposits = movements.some((mov) => mov > 0); 
 console.log(anyDeposits); // true
-// ! EVERY ! //
-// * the every() method executes a function for each array element
-// * the every() method returns true if the function returns true for all elements
-// * the every() method returns false if the function returns false for one element
-// * the every() method does not execute the function for empty elements
-// * the every() method does not change the original array
+! EVERY !
+* the every() method executes a function for each array element
+* the every() method returns true if the function returns true for all elements
+* the every() method returns false if the function returns false for one element
+* the every() method does not execute the function for empty elements
+* the every() method does not change the original array
 console.log(movements.every((mov) => mov > 0)); // false
 console.log(account4.movements.every((mov) => mov > 0)); // true
-// ! SEPARATE CALLBACK ! //
+! SEPARATE CALLBACK !
 const deposit = mov => mov > 0;
 console.log(movements.some(deposit)); // true
 console.log(movements.every(deposit)); // false
 console.log(movements.filter(deposit)); // [200, 450, 3000, 70, 1300]
+*/
+/*
+! FLAT !
+* the flat() method concatenates sub-array elements
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+* without chaining *
+// const accountMovements = accounts.map(acc => acc.movements);
+// console.log(accountMovements);
+// const allMovements = accountMovements.flat();
+// console.log(allMovements);
+// const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// console.log(overallBalance);
+* with chaining *
+const overallBalance = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+! FLATMAP !
+* the flatMap() method maps all array elements and creates a new flat array
+* flatMap() creates a new array from calling a function for every array element
+* flatMap() does not execute the function for empty elements
+* flatMap() does not change the original array
+const overallBalance2 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+*/
+/////////////////////////////////////////////////////////////////////////////
+// ! Coding Challenge #4 ! //
+/*
+This time, Julia and Kate are studying the activity levels of different dog breeds.
+
+YOUR TASKS:
+1. Store the average weight of a "Husky" in a variable "huskyWeight"
+2. Find the name of the only breed that likes both "running" and "fetch" ("dogBothActivities" variable)
+3. Create an array "allActivities" of all the activities of all the dog breeds
+4. Create an array "uniqueActivities" that contains only the unique activities (no activity repetitions). HINT: Use a technique with a special data structure that we studied a few sections ago.
+5. Many dog breeds like to swim. What other activities do these dogs like? Store all the OTHER activities these breeds like to do, in a unique array called "swimmingAdjacent".
+6. Do all the breeds have an average weight of 10kg or more? Log to the console whether "true" or "false".
+7. Are there any breeds that are "active"? "Active" means that the dog has 3 or more activities. Log to the console whether "true" or "false".
+
+BONUS: What's the average weight of the heaviest breed that likes to fetch? HINT: Use the "Math.max" method along with the ... operator.
+
+TEST DATA:
+*/
+const breeds = [
+  {
+    breed: "German Shepherd",
+    averageWeight: 32,
+    activities: ["fetch", "swimming"],
+  },
+  {
+    breed: "Dalmatian",
+    averageWeight: 24,
+    activities: ["running", "fetch", "agility"],
+  },
+  {
+    breed: "Labrador",
+    averageWeight: 28,
+    activities: ["swimming", "fetch"],
+  },
+  {
+    breed: "Beagle",
+    averageWeight: 12,
+    activities: ["digging", "fetch"],
+  },
+  {
+    breed: "Husky",
+    averageWeight: 26,
+    activities: ["running", "agility", "swimming"],
+  },
+  {
+    breed: "Bulldog",
+    averageWeight: 36,
+    activities: ["sleeping"],
+  },
+  {
+    breed: "Poodle",
+    averageWeight: 18,
+    activities: ["agility", "fetch"],
+  },
+];
+
+// * 1.
+const huskyWeight = breeds.find(
+  (breed) => breed.breed === "Husky"
+).averageWeight;
+console.log(huskyWeight);
+// * 2.
+// const dogBothActivities =
