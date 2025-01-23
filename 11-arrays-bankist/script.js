@@ -874,3 +874,28 @@ const heaviestBreedFetch = breeds
   .map((breed) => breed.averageWeight);
 console.log(Math.max(...heaviestBreedFetch));
 */
+// ! SORTING ARRAYS ! //
+// * STRINGS * //
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
+console.log(owners.sort());
+console.log(owners);
+// * NUMBERS * //
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// ? return < 0 - A, B (keep order) ? // 
+// * if a negative number or 0 is returned, no re-arranging happens * //
+// ? return > 0 - B, A (switch order) ? //
+// * if a positive number is returned, the two items switch place * //
+// * ASCENDING ORDER * //
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (a < b) return -1;
+// });
+movements.sort((a, b) => a - b);
+console.log(movements);
+// * DESCENDING ORDER * //
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (a < b) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements);
