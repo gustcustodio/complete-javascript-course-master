@@ -61,10 +61,12 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
-const displayMovements = function (movements) {
-  // containerMovements.innerHTML = "";
+const displayMovements = function (movements, sort = false) {
+  containerMovements.innerHTML = "";
 
-  movements.forEach(function (mov, i) {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? "deposit" : "withdrawal";
 
     const html = `
@@ -219,9 +221,16 @@ btnClose.addEventListener("click", (e) => {
   inputCloseUsername.value = inputClosePin.value = "";
 });
 
+let sorted = false;
+btnSort.addEventListener("click", (e) => {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
-// LECTURES
+// ! LECTURES ! //
 
 // const currencies = new Map([
 //   ["USD", "United States dollar"],
@@ -874,18 +883,21 @@ const heaviestBreedFetch = breeds
   .map((breed) => breed.averageWeight);
 console.log(Math.max(...heaviestBreedFetch));
 */
-// ! SORTING ARRAYS ! //
-// * STRINGS * //
+/*
+! SORTING ARRAYS !
+* STRINGS *
 const owners = ["Jonas", "Zach", "Adam", "Martha"];
 console.log(owners.sort());
 console.log(owners);
-// * NUMBERS * //
+* NUMBERS *
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-// ? return < 0 - A, B (keep order) ? // 
-// * if a negative number or 0 is returned, no re-arranging happens * //
-// ? return > 0 - B, A (switch order) ? //
-// * if a positive number is returned, the two items switch place * //
-// * ASCENDING ORDER * //
+? return < 0 - A, B (keep order) ? 
+* if a negative number or 0 is returned, no re-arranging happens *
+? return > 0 - B, A (switch order) ?
+* if a positive number is returned, the two items switch place *
+? return = 0 ?
+* if the two values are equivalent (i.e., if their order is irrelevant), the comparison function should return 0 *
+* ASCENDING ORDER *
 // movements.sort((a, b) => {
 //   if (a > b) return 1;
 //   if (a < b) return -1;
@@ -899,3 +911,4 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
+*/
