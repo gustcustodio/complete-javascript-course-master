@@ -942,5 +942,30 @@ console.log(groupedAccounts);
 // ! MORE WAYS OF CREATING AND FILLING ARRAYS ! //
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+// * EMPTY ARRAYS + FILL METHOD * //
+const x = new Array(7);
+console.log(x);
+x.fill(1, 3, 5);
+console.log(x);
+x.fill(1);
+console.log(x);
+arr.fill(23, 2, 6);
+console.log(arr);
+// * ARRAY.FROM * //
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
 
-// empty arrays + fill method
+labelBalance.addEventListener("click", () => {
+  const movementsUI = Array.from(
+    document.querySelectorAll(".movements__value"),
+    (el) => Number(el.textContent.replace("€", ""))
+  );
+  console.log(movementsUI);
+
+  const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+  console.log(
+    movementsUI2.map((el) => Number(el.textContent.replace("€", "")))
+  );
+});
