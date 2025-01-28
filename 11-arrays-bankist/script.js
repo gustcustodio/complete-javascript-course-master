@@ -939,10 +939,11 @@ console.log(groupedByActivity);
 const groupedAccounts = Object.groupBy(accounts, ({ type }) => type);
 console.log(groupedAccounts);
 */
-// ! MORE WAYS OF CREATING AND FILLING ARRAYS ! //
+/*
+! MORE WAYS OF CREATING AND FILLING ARRAYS !
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
-// * EMPTY ARRAYS + FILL METHOD * //
+* EMPTY ARRAYS + FILL METHOD *
 const x = new Array(7);
 console.log(x);
 x.fill(1, 3, 5);
@@ -951,7 +952,7 @@ x.fill(1);
 console.log(x);
 arr.fill(23, 2, 6);
 console.log(arr);
-// * ARRAY.FROM * //
+* ARRAY.FROM *
 const y = Array.from({ length: 7 }, () => 1);
 console.log(y);
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
@@ -964,8 +965,45 @@ labelBalance.addEventListener("click", () => {
   );
   console.log(movementsUI);
 
-  const movementsUI2 = [...document.querySelectorAll(".movements__value")];
-  console.log(
-    movementsUI2.map((el) => Number(el.textContent.replace("€", "")))
+  const movementsUI2 = [...document.querySelectorAll(".movements__value")].map(
+    (el) => Number(el.textContent.replace("€", ""))
   );
+  console.log(movementsUI2);
+  // console.log(
+  //   movementsUI2.map((el) => Number(el.textContent.replace("€", "")))
+  // );
 });
+*/
+/*
+! NON-DESTRUCTIVE ALTERNATIVES !
+! TOREVERSED !
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+const reversedMov = movements.toReversed();
+console.log(reversedMov);
+console.log(movements);
+! TOSORTED !
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+const fruits2 = fruits.toSorted();
+console.log(fruits);
+console.log(fruits2);
+! TOSPLICED !
+const months = ["Jan", "Mar", "Apr", "May"];
+* inserting an element at index 1
+const months2 = months.toSpliced(1, 0, "Feb");
+console.log(months2);
+* deleting two elements starting from index 2
+const months3 = months2.toSpliced(2, 2);
+console.log(months3);
+* replacing one element at index 1 with two elements
+const months4 = months3.toSpliced(1, 1, "Feb", "Mar");
+console.log(months4);
+* original array is not modified
+console.log(months);
+! WITH !
+// movements[1] = 2000;
+console.log(movements);
+const newMovements = movements.with(1, 2000);
+console.log(newMovements);
+console.log(movements);
+*/
