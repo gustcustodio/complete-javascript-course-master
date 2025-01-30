@@ -413,7 +413,7 @@ currenciesUnique.forEach(function (value, key, set) {
   console.log(`${value}: ${key} // ${set}`);
 });
 */
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 // ! Coding Challenge #1 ! //
 /* 
 Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners about their dog's age, and stored the data into an array (one array for each). For now, they are just interested in knowing whether a dog is an adult or a puppy. A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
@@ -575,7 +575,7 @@ const a = [1, 2, 3, 4, 5];
 console.log(a.reduce((x, y) => x + y, 0));
 console.log(a.reduce((x, y) => x * y, 1));
 */
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 // ! Coding Challenge #2 ! //
 
 /* 
@@ -629,7 +629,7 @@ const totalDepositsUSD = movements
 
 console.log(totalDepositsUSD);
 */
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 // ! Coding Challenge #3 ! //
 
 /* 
@@ -790,7 +790,7 @@ const overallBalance2 = accounts
   .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
 */
-/////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 // ! Coding Challenge #4 ! //
 /*
 This time, Julia and Kate are studying the activity levels of different dog breeds.
@@ -1007,8 +1007,9 @@ const newMovements = movements.with(1, 2000);
 console.log(newMovements);
 console.log(movements);
 */
-// ! ARRAY METHODS PRACTICE ! //
-// * 1.
+/*
+! ARRAY METHODS PRACTICE !
+* 1.
 const bankDepositSum = accounts
   .flatMap((acc) => acc.movements)
   .filter((mov) => mov > 0)
@@ -1016,7 +1017,7 @@ const bankDepositSum = accounts
 
 console.log(bankDepositSum);
 
-// * 2.
+* 2.
 // const numDeposits1000 = accounts
 //   .flatMap((acc) => acc.movements)
 //   .filter((mov) => mov >= 1000).length;
@@ -1027,13 +1028,13 @@ const numDeposits1000 = accounts
 
 console.log(numDeposits1000);
 
-// ? PREFIXED OPERATOR ? //
+? PREFIXED OPERATOR ?
 let a = 10;
 console.log(a++);
 console.log(a);
 console.log(++a);
 
-// * 3.
+* 3.
 const { deposits, withdrawals } = accounts
   .flatMap((acc) => acc.movements)
   .reduce(
@@ -1047,7 +1048,7 @@ const { deposits, withdrawals } = accounts
 
 console.log(deposits, withdrawals);
 
-// * 4.
+* 4.
 // this is a nice title -> This Is a Nice Title
 const convertTitleCase = function (title) {
   const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
@@ -1066,3 +1067,60 @@ const convertTitleCase = function (title) {
 console.log(convertTitleCase("this is a nice title"));
 console.log(convertTitleCase("this is a LONG title but not too long"));
 console.log(convertTitleCase("and here is another title with an EXAMPLE"));
+*/
+////////////////////////////////////////////////////////////////////////////
+// ! Coding Challenge #5 ! //
+/* 
+Julia and Kate are still studying dogs. This time they are want to figure out if the dogs in their are eating too much or too little food.
+
+- Formula for calculating recommended food portion: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
+- Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite.
+- Eating an okay amount means the dog's current food portion is within a range 10% above and below the recommended portion (see hint).
+
+YOUR TASKS:
+1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion (recFood) and add it to the object as a new property. Do NOT create a new array, simply loop over the array (We never did this before, so think about how you can do this without creating a new array).
+2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple users, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
+3. Create an array containing all owners of dogs who eat too much (ownersTooMuch) and an array with all owners of dogs who eat too little (ownersTooLittle).
+4. Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
+5. Log to the console whether there is ANY dog eating EXACTLY the amount of food that is recommended (just true or false)
+6. Log to the console whether ALL of the dogs are eating an OKAY amount of food (just true or false)
+7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 6.)
+8. Group the dogs into the following 3 groups: 'exact', 'too-much' and 'too-little', based on whether they are eating too much, too little or the exact amount of food, based on the recommended food portion.
+9. Group the dogs by the number of owners they have
+10. Sort the dogs array by recommended food portion in an ascending order. Make sure to NOT mutate the original array!
+
+HINT 1: Use many different tools to solve these challenges, you can use the summary lecture to choose between them 😉
+HINT 2: Being within a range 10% above and below the recommended portion means: current > (recommended * 0.90) && current < (recommended * 1.10). Basically, the current portion should be between 90% and 110% of the recommended portion.
+
+GOOD LUCK 😀
+*/
+
+// TEST DATA //
+const dogs = [
+  { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
+  { weight: 8, curFood: 200, owners: ["Matilda"] },
+  { weight: 13, curFood: 275, owners: ["Sarah", "John", "Leo"] },
+  { weight: 18, curFood: 244, owners: ["Joe"] },
+  { weight: 32, curFood: 340, owners: ["Michael"] },
+];
+
+// * 1. Loop over the array containing dog objects, and for each dog, calculate the recommended food portion (recFood) and add it to the object as a new property. Do NOT create a new array, simply loop over the array (We never did this before, so think about how you can do this without creating a new array).
+
+dogs.forEach((dog) => {
+  dog.recFood = Math.trunc(dog.weight ** 0.75 * 28);
+});
+
+// console.log(dogs);
+
+// * 2. Find Sarah's dog and log to the console whether it's eating too much or too little. HINT: Some dogs have multiple users, so you first need to find Sarah in the owners array, and so this one is a bit tricky (on purpose) 🤓
+
+// console.log(dogs[2].owners[0]);
+
+dogs.forEach((dog) => {
+  if (dog.owners.includes("Sarah")) {
+    console.log("DIF: ", dog.curFood - dog.recFood);
+    console.log("CURRENT: ", dog.curFood);
+    console.log(dog.recFood * 0.90);
+    console.log(dog.recFood * 1.10);
+  }
+});
