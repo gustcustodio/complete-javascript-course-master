@@ -1179,8 +1179,46 @@ const ownersTooLittle = dogs
 // * 6. Log to the console whether ALL of the dogs are eating an OKAY amount of food (just true or false)
 
 const checkEatingOkay = (dog) =>
-  dog.curFood < dog.recFood * 1.1 && dog.recFood * 0.9;
+  dog.curFood < dog.recFood * 1.1 && dog.curFood > dog.recFood * 0.9;
 
 // console.log(dogs.every(checkEatingOkay));
 
 // * 7. Create an array containing the dogs that are eating an OKAY amount of food (try to reuse the condition used in 6.)
+
+const eatingOkay = dogs.filter(checkEatingOkay);
+
+// console.log(eatingOkay);
+
+// * 8. Group the dogs into the following 3 groups: 'exact', 'too-much' and 'too-little', based on whether they are eating too much, too little or the exact amount of food, based on the recommended food portion.
+
+const dogsGroupedByPortion = Object.groupBy(dogs, (dog) => {
+  if (dog.curFood === dog.recFood) return "exact";
+  if (dog.curFood > dog.recFood * 1.1) return "too-much";
+  if (dog.curFood < dog.recFood * 0.9) return "too-litle";
+  return "in-the-range";
+});
+
+// console.log(dogsGroupedByPortion);
+
+// * 9. Group the dogs by the number of owners they have
+
+const dogsGroupedByOwners = Object.groupBy(dogs, (dog) => {
+  const ownersLength = dog.owners.length;
+
+  if (ownersLength >= 3) return "3";
+  if (ownersLength >= 2) return "2";
+  if (ownersLength >= 1) return "1";
+});
+
+// console.log(dogsGroupedByOwners);
+
+// * 10. Sort the dogs array by recommended food portion in an ascending order. Make sure to NOT mutate the original array!
+
+const dogsPortionAscending = dogs
+  .map((dog) => dog.recFood)
+  .sort((a, b) => a - b);
+
+// console.log(dogsPortionAscending);
+
+const checkMutate = dogs.map(dog => dog.recFood);
+// console.log(checkMutate);
