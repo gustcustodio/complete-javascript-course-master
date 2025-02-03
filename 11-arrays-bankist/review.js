@@ -34,11 +34,11 @@
 // console.log(x3); // [2]
 // const x4 = a.splice(2, 0, "a", "b");
 // console.log(a); // [1, 2, "a", "b", 3, 4, 5, 6, 7, 8]
-// console.log(x4); // [] 
+// console.log(x4); // []
 // const x5 = a.splice(2, 2, [1, 2], 3);
 // console.log(a); // [1, 2, [1, 2], 3, 5, 6, 7, 8]
 // console.log(x5); // [3, 4]
-// ! REVERSE ! //  
+// ! REVERSE ! //
 // const fruits = ["Banana", "Orange", "Apple", "Mango"];
 // console.log(fruits.reverse()); // ["Mango", "Apple", "Orange", "Banana"]
 // console.log(fruits); // ["Mango", "Apple", "Orange", "Banana"]
@@ -97,12 +97,12 @@
 // console.log(arr1[-1]); // undefined
 // arr1["-1"] = "Propriedade de string";
 // console.log(arr1[-1]); // Propriedade de string
-// console.log(arr1["0"]); // 5 
-// console.log(arr1.length); // 5 
+// console.log(arr1["0"]); // 5
+// console.log(arr1.length); // 5
 // console.log(arr1[arr1.length - 1]); // 44
 // console.log(arr1.at(-1)); // 44
 // * MÉTODOS DE ARRAY DE ECMASCRIPT 5 * //
-// ?  A maioria dos métodos aceita uma função como primeiro argumento e chama essa função uma vez para cada elemento (ou para alguns elementos) do array. Se o array é esparso, a função passada não é chamada para os elementos inexistentes. Na maioria dos casos, a função fornecida é chamada com três argumentos: o valor do elemento do array, o índice do elemento e o array em si. Frequentemente, apenas o primeiro desses valores de argumento é necessário e o segundo e terceiro valores podem ser ignorados. ? // 
+// ?  A maioria dos métodos aceita uma função como primeiro argumento e chama essa função uma vez para cada elemento (ou para alguns elementos) do array. Se o array é esparso, a função passada não é chamada para os elementos inexistentes. Na maioria dos casos, a função fornecida é chamada com três argumentos: o valor do elemento do array, o índice do elemento e o array em si. Frequentemente, apenas o primeiro desses valores de argumento é necessário e o segundo e terceiro valores podem ser ignorados. ? //
 // ! FOREACH ! //
 // const data = [1, 2, 3, 4, 5];
 // let sum = 0;
@@ -229,3 +229,43 @@
 // console.log(ages.findLastIndex(age => age > 50)); // -1
 // const array = [5, 12, 50, 130, 44];
 // console.log(array.findLastIndex((element) => element > 45)); // 3
+// ! EVERY ! //
+// const a = [1, 2, 3, 4, 5];
+// console.log(a.every((x) => x < 10)); // true
+// console.log(a.every((x) => x % 2 === 0)); // false
+// const ages = [32, 33, 16, 40];
+// console.log(ages.every((x) => x >= 18)); // false
+// const survey = [
+//   { name: "Steve", answer: "Yes" },
+//   { name: "Jessica", answer: "Yes" },
+//   { name: "Peter", answer: "Yes" },
+//   { name: "Elaine", answer: "No" },
+// ];
+// function isSameAnswer(el, index, arr) {
+//   if (index === 0) {
+//     return true;
+//   } else {
+//     return el.answer === arr[index - 1].answer;
+//   }
+// }
+// console.log(survey.every(isSameAnswer)); // false
+// ! SOME ! //
+// const a = [1, 2, 3, 4, 5];
+// console.log(a.some((x) => x % 2 === 0)); // true
+// console.log(a.some(isNaN)); // false
+// const ages = [3, 10, 18, 20];
+// console.log(ages.some((x) => x >= 18)); // true
+// ! FLAT ! //
+// const myArr = [[1, 2], [3, 4], [5, 6]];
+// console.log(myArr.flat());
+// const myArr2 = [1, 2, [3, [4, 5, 6], 7], 8];
+// console.log(myArr2.flat());
+// console.log(myArr.flat(2));
+// ! FLATMAP ! //
+// const arr1 = [1, 2, 3, 4];
+// console.log(arr1.map((x) => [x * 2]));
+// console.log(arr1.flatMap((x) => [x * 2]));
+// console.log(arr1.flatMap((x) => [[x * 2]]));
+// ! SORT ! //
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits.sort());
