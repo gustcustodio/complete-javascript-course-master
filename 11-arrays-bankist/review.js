@@ -267,5 +267,53 @@
 // console.log(arr1.flatMap((x) => [x * 2]));
 // console.log(arr1.flatMap((x) => [[x * 2]]));
 // ! SORT ! //
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-console.log(fruits.sort());
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// console.log(fruits.sort());
+// const points = [40, 100, 1, 5, 25, 10];
+// console.log(points.sort((a, b) => a - b));
+// console.log(points.sort((a, b) => b - a));
+// const stringArray = ["Blue", "Humpback", "Beluga"];
+// const numberArray = [40, 1, 5, 200];
+// const numericStringArray = ["80", "9", "700"];
+// const mixedNumericArray = ["80", "9", "700", 40, 1, 5, 200];
+
+// function compareNumbers (a, b) {
+//   return a - b;
+// }
+
+// console.log(stringArray.sort()); // ["Beluga", "Blue", "Humpback"]
+// console.log(numberArray.sort()); // [1, 200, 40, 5]
+// console.log(numberArray.sort(compareNumbers)); // [1, 5, 40, 200]
+// console.log(numericStringArray.sort()); // ["700", "80", "9"]
+// console.log(numericStringArray.sort(compareNumbers)); // ["9", "80", "700"]
+// console.log(mixedNumericArray.sort()); // [1, 200, 40, 5, "700", "80", "9"]
+// console.log(mixedNumericArray.sort(compareNumbers)); // [1, 5, "9", 40, "80", 200, "700"]
+// ! ARRAY GROUPING ! //
+// const fruits = [
+//   { name: "apples", quantity: 300 },
+//   { name: "bananas", quantity: 500 },
+//   { name: "oranges", quantity: 200 },
+//   { name: "kiwi", quantity: 150 },
+// ];
+
+// const result = Object.groupBy(fruits, ({ quantity }) => {
+//   return quantity > 200 ? "ok" : "low";
+// });
+
+// console.log(result);
+
+// const inventory = [
+//   { name: "asparagus", type: "vegetables", quantity: 5 },
+//   { name: "bananas", type: "fruit", quantity: 0 },
+//   { name: "goat", type: "meat", quantity: 23 },
+//   { name: "cherries", type: "fruit", quantity: 5 },
+//   { name: "fish", type: "meat", quantity: 22 },
+// ];
+
+// const result = Object.groupBy(inventory, ({ type }) => type);
+// console.log(result);
+// ! NON-DESTRUCTIVE ALTERNATIVES ! //
+// ! TOREVERSED ! //
+// ! TOSORTED ! //
+// ! TOSPLICED ! //
+// ! WITH ! //
