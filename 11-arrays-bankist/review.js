@@ -314,6 +314,53 @@
 // console.log(result);
 // ! NON-DESTRUCTIVE ALTERNATIVES ! //
 // ! TOREVERSED ! //
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const fruits2 = fruits.toReversed();
+// console.log(fruits);
+// console.log(fruits2);
+// const items = [1, , 3];
+// console.log(items.toReversed());
+// const arrayLike = {
+//   length: 5,
+//   unrelated: "foo",
+//   2: 4,
+//   3: 5,
+//   4: 6,
+// };
+// console.log(Array.prototype.toReversed.call(arrayLike));
+// the '0' and '1' indices are not present so they become undefined
 // ! TOSORTED ! //
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const fruits2 = fruits.toSorted();
+// console.log(fruits);
+// console.log(fruits2);
+// const values = [1, 10, 21, 2];
+// const sortedValues = values.toSorted((a, b) => a - b);
+// console.log(values);
+// console.log(sortedValues);
+// const letters = ["a", "c", , "f", "h"];
+// console.log(letters.toSorted());
+// console.log(letters);
 // ! TOSPLICED ! //
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const fruits2 = fruits.toSpliced(2, 0, "Lemon", "Kiwi");
+// console.log(fruits);
+// console.log(fruits2);
+// const months = ["Jan", "Mar", "Apr", "May"];
+// const months2 = months.toSpliced(1, 0, "Feb");
+// console.log(months2);
+// const months3 = months2.toSpliced(2, 2);
+// console.log(months3);
+// const months4 = months3.toSpliced(1, 1, "Feb", "Mar");
+// console.log(months4);
 // ! WITH ! //
+// const months = ["Januar", "Februar", "Mar", "April"];
+// const myMonths = months.with(2, "March");
+// console.log(months);
+// console.log(myMonths);
+// const values = [1, 2, 3, 4, 5];
+// const values2 = values.with(2, 6);
+// console.log(values);
+// console.log(values2);
+// const arr = [1, 2, 3, 4, 5];
+// console.log(arr.with(2, 8).map((x) => x ** 2));
