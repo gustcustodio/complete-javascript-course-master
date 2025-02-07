@@ -257,29 +257,29 @@ btnSort.addEventListener("click", function (e) {
 /*
 console.log(23 === 23.0);
 
-* base 10 - 0 to 9. 1/10 = 0.1. 3/10 = 3.3333333
-* base 2 - 0 1
+* base 10 - 0 to 9. 1/10 = 0.1. 3/10 = 3.3333333 *
+* base 2 - 0 1 *
 console.log(0.1 + 0.2);
 console.log(0.1 + 0.2 === 0.3);
 
-* conversion
+* conversion *
 console.log(Number("23"));
 console.log(+"23");
 
-* parsing
+* parsing *
 console.log(Number.parseInt("30px", 10));
 console.log(Number.parseInt("e23", 10));
 
 console.log(Number.parseInt("2.5rem"));
 console.log(Number.parseFloat("2.5rem"));
 
-* check if value is NaN
+* check if value is NaN *
 console.log(Number.isNaN(20));
 console.log(Number.isNaN("20"));
 console.log(Number.isNaN(+"20X"));
 console.log(Number.isNaN(23 / 0));
 
-* check if value is number
+* check if value is number *
 console.log(Number.isFinite(20));
 console.log(Number.isFinite("20"));
 console.log(Number.isFinite(+"20X"));
@@ -289,3 +289,47 @@ console.log(Number.isInteger(23));
 console.log(Number.isInteger(23.0));
 console.log(Number.isInteger(23 / 0));
 */
+
+// ! MATH AND ROUNDING ! //
+console.log(Math.sqrt(25));
+console.log(25 ** (1 / 2));
+console.log(8 ** (1 / 3));
+
+console.log(Math.max(5, 18, 23, 11, 2));
+console.log(Math.max(5, 18, "23", 11, 2));
+console.log(Math.max(5, 18, "23px", 11, 2));
+
+console.log(Math.min(5, 18, 23, 11, 2));
+
+console.log(Math.PI);
+
+// * will generate a number between 1 and 6 * //
+console.log(Math.trunc(Math.random() * 6) + 1); 
+
+// * will generate a number between MIN and MAX * //
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+
+console.log(randomInt(10, 20));
+console.log(randomInt(0, 3));
+
+// ! ROUNDING INTEGERS ! //
+console.log(Math.round(23.3));
+console.log(Math.round(23.9));
+
+console.log(Math.ceil(23.3));
+console.log(Math.ceil(23.9));
+
+console.log(Math.floor(23.3));
+console.log(Math.floor(23.9));
+
+console.log(Math.trunc(23.3));
+
+console.log(Math.trunc(-23.3));
+console.log(Math.floor(-23.3));
+
+// ! ROUNDING DECIMALS ! //
+console.log((2.7).toFixed(0));
+console.log((2.7).toFixed(3));
+console.log((2.345).toFixed(2));
+console.log(+(2.345).toFixed(2));
