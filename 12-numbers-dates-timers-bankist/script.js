@@ -94,7 +94,7 @@ const displayMovements = function (movements, sort = false) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -104,19 +104,19 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
 
   const interest = acc.movements
     .filter((mov) => mov > 0)
@@ -126,7 +126,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 const createUsernames = function (accs) {
@@ -206,7 +206,7 @@ btnTransfer.addEventListener("click", function (e) {
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(inputLoanAmount.value);
 
   if (
     amount > 0 &&
@@ -289,8 +289,8 @@ console.log(Number.isInteger(23));
 console.log(Number.isInteger(23.0));
 console.log(Number.isInteger(23 / 0));
 */
-
-// ! MATH AND ROUNDING ! //
+/*
+! MATH AND ROUNDING !
 console.log(Math.sqrt(25));
 console.log(25 ** (1 / 2));
 console.log(8 ** (1 / 3));
@@ -303,17 +303,17 @@ console.log(Math.min(5, 18, 23, 11, 2));
 
 console.log(Math.PI);
 
-// * will generate a number between 1 and 6 * //
-console.log(Math.trunc(Math.random() * 6) + 1); 
+* will generate a number between 1 and 6 *
+console.log(Math.trunc(Math.random() * 6) + 1);
 
-// * will generate a number between MIN and MAX * //
+* will generate a number between MIN and MAX *
 const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 
 console.log(randomInt(10, 20));
 console.log(randomInt(0, 3));
 
-// ! ROUNDING INTEGERS ! //
+! ROUNDING INTEGERS !
 console.log(Math.round(23.3));
 console.log(Math.round(23.9));
 
@@ -328,8 +328,51 @@ console.log(Math.trunc(23.3));
 console.log(Math.trunc(-23.3));
 console.log(Math.floor(-23.3));
 
-// ! ROUNDING DECIMALS ! //
+! ROUNDING DECIMALS !
 console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3));
 console.log((2.345).toFixed(2));
 console.log(+(2.345).toFixed(2));
+*/
+/*
+! REMAINDER OPERATOR !
+
+console.log(5 % 2);
+console.log(5 / 2);
+
+console.log(8 % 3);
+console.log(8 / 3);
+
+console.log(6 % 2);
+console.log(6 / 2);
+
+console.log(7 % 2);
+console.log(7 / 2);
+
+const isEven = (n) => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(514));
+
+labelBalance.addEventListener("click", () => {
+  [...document.querySelectorAll(".movements__row")].forEach((row, i) => {
+    if (i % 2 === 0) {
+      row.style.backgroundColor = "orangered";
+    }
+  });
+});
+*/
+/*
+! NUMERIC SEPARATORS !
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+const price = 345_99;
+console.log(price);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+console.log(Number("230_000"));
+console.log(parseInt("230_000"));
+*/
