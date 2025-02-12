@@ -410,6 +410,7 @@ console.log(10n / 3n);
 console.log(10 / 3);
 */
 // ! CREATING DATES ! //
+// ? new Date(year,month,day,hours,minutes,seconds,ms) ? //
 const now = new Date();
 console.log(now);
 
