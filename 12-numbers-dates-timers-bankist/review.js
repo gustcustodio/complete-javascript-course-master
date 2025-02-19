@@ -78,3 +78,20 @@ console.log(date);
 // console.log(Date.now());
 // console.log(Date.parse());
 // console.log(Date.UTC());
+// ! TypeError ! //
+// console.log(date.now());
+// console.log(date.parse());
+// console.log(date.UTC());
+
+class Chat {
+  static sendMessage() {
+    return "You got me!";
+  }
+}
+
+const myChat = new Chat();
+
+// ! Uncaught TypeError: myChat.sendMessage is not a function ! //
+// console.log(myChat.sendMessage());
+// * on the other hand, if we access the static method sendMessage using the class name Chat directly, then: * //
+console.log(Chat.sendMessage());
