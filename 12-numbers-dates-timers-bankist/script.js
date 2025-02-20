@@ -207,14 +207,38 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = Math.trunc(time / 60)
+      .toString()
+      .padStart(2, 0);
+    const sec = (time % 60).toString().padStart(2, 0);
+    // in each call, print the remaining time to UI //
+    labelTimer.textContent = `${min}:${sec}`;
+    // decrease 1s //
+    time--;
+    // when 0 seconds, stop timer and log out user //
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = "Log in to get started";
+      containerApp.style.opacity = 0;
+    }
+  };
+  // set time to 5 minutes //
+  let time = 10;
+  // call the timer every second //
+  tick();
+  const timer = setInterval(tick, 1000);
+};
+
 /////////////////////////////////////////////////////////////////////////////
 // ! EVENT HANDLERS ! //
 let currentAccount;
 
 // FAKE ALWAYS LOGGED IN //
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 // EXPERIMENTING API //
 // const now = new Date();
@@ -275,6 +299,8 @@ btnLogin.addEventListener("click", function (e) {
     // clear input fields //
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
+
+    startLogOutTimer();
 
     // update UI //
     updateUI(currentAccount);
@@ -563,7 +589,8 @@ const calcDaysPassed = (date1, date2) =>
 const days1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 14));
 console.log(days1);
 */
-// ! INTERNATIONALIZING NUMBERS ! //
+/*
+! INTERNATIONALIZING NUMBERS !
 const num = 3884764.23;
 const options = {
   style: "currency",
@@ -577,3 +604,34 @@ console.log(
   navigator.language,
   new Intl.NumberFormat(navigator.language, options).format(num)
 );
+*/
+/*
+! setTimeout !
+const ingredients = ["olives", "bacon"];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+  3000,
+  ...ingredients
+);
+
+console.log("Waiting...");
+
+if (ingredients.includes("spinach")) {
+  clearTimeout(pizzaTimer);
+}
+! setInterval !
+setInterval(() => {
+  const now = new Date();
+  console.log(now);
+}, 1000)
+*/
+/*
+! SIMPLE CLOCK !
+setInterval(() => {
+  const date = new Date();
+  const hour = date.getHours().toString().padStart(2, "0");
+  const minutes = date.getMinutes().toString().padStart(2, "0");
+  const seconds = date.getSeconds().toString().padStart(2, "0");
+  console.log(`${hour}:${minutes}:${seconds}`);
+}, 1000);
+*/
