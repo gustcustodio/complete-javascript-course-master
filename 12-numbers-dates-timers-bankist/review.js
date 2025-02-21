@@ -82,7 +82,7 @@ console.log(date);
 // console.log(date.now());
 // console.log(date.parse());
 // console.log(date.UTC());
-
+/*
 class Chat {
   static sendMessage() {
     return "You got me!";
@@ -95,3 +95,28 @@ const myChat = new Chat();
 // console.log(myChat.sendMessage());
 // * on the other hand, if we access the static method sendMessage using the class name Chat directly, then: * //
 console.log(Chat.sendMessage());
+*/
+// ! The Internationalization API - Intl ! //
+// ! DateTimeFormat ! //
+// * in basic use without specifying a locale, DateTimeFormat uses the default locale and default options * //
+console.log(new Intl.DateTimeFormat().format(date));
+// US English //
+console.log(new Intl.DateTimeFormat("en-US").format(date));
+// British English //
+console.log(new Intl.DateTimeFormat("en-GB").format(date));
+// Korean //
+console.log(new Intl.DateTimeFormat("ko-KR").format(date));
+// Arabic //
+console.log(new Intl.DateTimeFormat("ar-EG").format(date));
+// ! USING OPTIONS ! //
+let options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+  timeZoneName: "short",
+};
+
+// console.log(new Intl.DateTimeFormat("de-DE", options).format(date));
+console.log(new Intl.DateTimeFormat("en-US", options).format(date));
