@@ -215,25 +215,27 @@ const startLogOutTimer = function () {
     const sec = (time % 60).toString().padStart(2, 0);
     // in each call, print the remaining time to UI //
     labelTimer.textContent = `${min}:${sec}`;
-    // decrease 1s //
-    time--;
     // when 0 seconds, stop timer and log out user //
     if (time === 0) {
       clearInterval(timer);
       labelWelcome.textContent = "Log in to get started";
       containerApp.style.opacity = 0;
     }
+    // decrease 1s //
+    time--;
   };
   // set time to 5 minutes //
-  let time = 10;
+  let time = 300;
   // call the timer every second //
   tick();
   const timer = setInterval(tick, 1000);
+
+  return timer;
 };
 
 /////////////////////////////////////////////////////////////////////////////
 // ! EVENT HANDLERS ! //
-let currentAccount;
+let currentAccount, timer;
 
 // FAKE ALWAYS LOGGED IN //
 // currentAccount = account1;
@@ -300,10 +302,19 @@ btnLogin.addEventListener("click", function (e) {
     inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
 
-    startLogOutTimer();
+    // timer //
+    if (timer) {
+      clearInterval(timer);
+    }
+
+    timer = startLogOutTimer();
 
     // update UI //
     updateUI(currentAccount);
+
+    // reset timer //
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -331,6 +342,10 @@ btnTransfer.addEventListener("click", function (e) {
 
     // update UI //
     updateUI(currentAccount);
+
+    // reset timer //
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -352,6 +367,11 @@ btnLoan.addEventListener("click", function (e) {
     // update UI //
     updateUI(currentAccount);
   }
+
+  // reset timer //
+  clearInterval(timer);
+  timer = startLogOutTimer();
+
   inputLoanAmount.value = "";
 });
 
