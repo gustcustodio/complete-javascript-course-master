@@ -96,8 +96,9 @@ const myChat = new Chat();
 // * on the other hand, if we access the static method sendMessage using the class name Chat directly, then: * //
 console.log(Chat.sendMessage());
 */
-// ! The Internationalization API - Intl ! //
-// ! DateTimeFormat ! //
+/*
+! The Internationalization API - Intl !
+! DateTimeFormat !
 // * in basic use without specifying a locale, DateTimeFormat uses the default locale and default options * //
 console.log(new Intl.DateTimeFormat().format(date));
 // US English //
@@ -108,7 +109,7 @@ console.log(new Intl.DateTimeFormat("en-GB").format(date));
 console.log(new Intl.DateTimeFormat("ko-KR").format(date));
 // Arabic //
 console.log(new Intl.DateTimeFormat("ar-EG").format(date));
-// ! USING OPTIONS ! //
+! USING OPTIONS !
 let options = {
   weekday: "long",
   year: "numeric",
@@ -120,3 +121,9 @@ let options = {
 
 // console.log(new Intl.DateTimeFormat("de-DE", options).format(date));
 console.log(new Intl.DateTimeFormat("en-US", options).format(date));
+*/
+// ! setTimeOut() ! //
+// * the setTimeout() is executed only once * //
+setTimeout(console.log("Hello"), 1000);
+// ! setInterval ! //
+// setInterval(() => console.log("Hello 2"), 1000);
